@@ -121,8 +121,11 @@
 ### to install git on server:
 	$ sudo install git
 
-### git clone in to a folder (example to html)
+### git clone into a folder (example to html)
 	$ git clone https://github.com/robertbunch/jquery-todo.git html
+
+### to just clone a repo
+	$ sudo git clone https://github.com/robertbunch/todo-react-express.git
 
 ### switch to super user
 	$ sudo su
@@ -158,6 +161,7 @@ $ sudo chown -R newUser folderName/
 	
 	3.Install Certbot
 	Run this command on the command line on the machine to install Certbot.
+	
 	   $ sudo apt-get install certbot python-certbot-apache
 
 ###.Before going to next step, currently 4. you need to do the following.
@@ -190,6 +194,11 @@ $ sudo chown -R newUser folderName/
 
 ### Enter the following command modify as required:
 
+	https://www.digitalocean.com/community/tutorials/how-to-use-apache-as-a-reverse-proxy-with-mod_proxy-on-ubuntu-16-04
+
+	This will enable the revers proxy,and adds support for proxying HTTP connections
+	$ sudo a2enmod proxy_http
+	To enable ower site
 	$ sudo a2ensite foxhost9.com.conf
 	$ sudo service apache2 reload  or  $ sudo systemctl reload apache2
 
@@ -235,3 +244,124 @@ $ sudo certbot --authenticator standalone --installer apache -d foxhost9.com --p
 	</VirtualHost>
 	
 	$ sudo service apache2 restart
+
+##
+##
+
+## Install mysql on ubuntu server
+	$ sudo apt install mysql-server
+### To set password if not asked
+	$ mysql_secure_installation
+
+## Install nodejs on ubuntu server
+	https://tecadmin.net/install-latest-nodejs-npm-on-ubuntu/
+
+	$ sudo apt-get install curl
+	$ curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
+	
+	$ sudo apt-get install nodejs
+
+	$ node -v
+	$ npm -v
+
+#### Install your nodejs dependences on Ubuntu server
+	go to your project dir example: /var/www/something 
+	it should have your package.json file and run:
+
+	$ sudo npm install
+
+### To install nodemon globally
+	info > https://www.npmjs.com/package/nodemon
+
+	$ sudo npm install nodemon -g
+
+### Run nodemon 
+	$ nodemon
+
+## Mysql create new user to connect through ssh
+	https://www.digitalocean.com/community/tutorials/how-to-create-a-new-user-and-grant-permissions-in-mysql
+
+	$ sudo mysql -u root -p
+	$ ******* 
+
+	To view a List of MySQL Users:
+	mysql> SELECT User,Host FROM mysql.user;
+
+	To create a new user example: admin on localhost with password ****: 
+	mysql> CREATE USER 'admin'@'localhost' IDENTIFIED BY '****';
+
+	To delete a user:
+	mysql> DROP USER 'admin'@'localhost';
+
+	To update host:
+	mysql> UPDATE mysql.user SET host="localhost" WHERE user="admin";
+
+	To Grant permissions to a user.
+	mysql> GRANT ALL PRIVILEGES ON * . * TO 'admin'@'localhost';
+
+	Once you have finalized the permissions that you want to set up for 
+	your new users, always be sure to reload all the privileges.
+	mysql> FLUSH PRIVILEGES;
+
+
+### Setting up workbench:
+
+	in work bech select  +  in MySQL Connection
+
+	Connection Name: ubuntu_server				 < set a name 
+	
+	Connection Method: Standard TCP/IP over SSH
+	
+	SSH Hostname: 18.156.3.139                   <  you server IPv4
+	
+	SSG Username: ubuntu						 <  your username on server
+	
+	SSH Key File: P:/AWS/deploy_web_apps.pem	
+	
+	MySQL Hostname: localhost					 <  as set above, when create user
+	
+	MySQL Server Port: 3306						 <  need to open this post as 
+													did for ssh http & https
+	
+	Username: admin								 <  as did above, when create user
+	
+	Password Store in Vauly.. :     < you can enter pass or enter it on connect
+									  this is as set above, when create user
+
+
+## To check if port is in use in
+	https://www.cyberciti.biz/faq/unix-linux-check-if-port-is-in-use-command/
+
+	$ sudo lsof -i -P -n | grep LISTEN
+	or
+	$ sudo netstat -tulpn | grep LISTEN
+
+	sshd    85379     root    3u  IPv4 0xffff80000039e000      0t0  TCP 10.86.128.138:22 (LISTEN)
+
+	sshd 			is the name of the application.
+    10.86.128.138 	is the IP address to which sshd application bind to (LISTEN)
+    22 				is the TCP port that is being used (LISTEN)
+    85379 			is the process ID of the sshd process
+
+### Find (and kill) process running on a certain port
+
+	use lsof to find the process or port (if you have port enter port and vs):
+
+	$ sudo lsof -i -P -n | grep LISTEN | grep 4444
+
+	to stop process on port:
+	$ kill `lsof -t -i:4444`
+
+
+
+## Install PM2 on ubuntu (globally)
+	$ sudo npm install pm2 -g
+
+	start app www with pm2 and give it a bame ToDo
+	$ sudo pm2 start bin/www --name "ToDo Api"
+
+	pm2 list running apps 
+	$ sudo pm2 list
+
+
+
