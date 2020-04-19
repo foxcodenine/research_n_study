@@ -139,7 +139,7 @@ $ sudo chown -R newUser folderName/
 <br><br>
 
 
-# add https to website:
+## add https to website:
 
 	https://letsencrypt.org/
 	https://certbot.eff.org/
@@ -164,7 +164,7 @@ $ sudo chown -R newUser folderName/
 	
 	   $ sudo apt-get install certbot python-certbot-apache
 
-###.Before going to next step, currently 4. you need to do the following.
+### Before going to next step, currently 4. you need to do the following.
 
 	  $ cd /etc/apache2/sites-available
 	  $ ls -l 
@@ -185,14 +185,14 @@ $ sudo chown -R newUser folderName/
 		        Options +Indexes
 		    </Directory>
 		</VirtualHost>
-### Change root / dounment dirc name accordingly:
+#### Change root / document dir name accordingly:
 	  $ cd /var/www
 	  $ sudo mv html foxhost9
 	
 	  $ cd /etc/apache2/sites-available
 	  $ ls
 
-### Enter the following command modify as required:
+#### Enter the following command, modify as required:
 
 	https://www.digitalocean.com/community/tutorials/how-to-use-apache-as-a-reverse-proxy-with-mod_proxy-on-ubuntu-16-04
 
@@ -253,6 +253,8 @@ $ sudo certbot --authenticator standalone --installer apache -d foxhost9.com --p
 ### To set password if not asked
 	$ mysql_secure_installation
 
+<br>
+
 ## Install nodejs on ubuntu server
 	https://tecadmin.net/install-latest-nodejs-npm-on-ubuntu/
 
@@ -277,6 +279,8 @@ $ sudo certbot --authenticator standalone --installer apache -d foxhost9.com --p
 
 ### Run nodemon 
 	$ nodemon
+
+<br>
 
 ## Mysql create new user to connect through ssh
 	https://www.digitalocean.com/community/tutorials/how-to-create-a-new-user-and-grant-permissions-in-mysql
@@ -328,7 +332,7 @@ $ sudo certbot --authenticator standalone --installer apache -d foxhost9.com --p
 	Password Store in Vauly.. :     < you can enter pass or enter it on connect
 									  this is as set above, when create user
 
-
+<br>
 ## To check if port is in use in
 	https://www.cyberciti.biz/faq/unix-linux-check-if-port-is-in-use-command/
 
@@ -353,7 +357,7 @@ $ sudo certbot --authenticator standalone --installer apache -d foxhost9.com --p
 	$ kill `lsof -t -i:4444`
 
 
-
+<br>
 ## Install PM2 on ubuntu (globally)
 	$ sudo npm install pm2 -g
 
