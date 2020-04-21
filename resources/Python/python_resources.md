@@ -10,4 +10,7 @@
 	https://www.practicepython.org/
 
 #### How To Deploy a Flask Application on an Ubuntu VPS
-https://www.digitalocean.com/community/tutorials/how-to-deploy-a-flask-application-on-an-ubuntu-vps
+	https://www.digitalocean.com/community/tutorials/how-to-deploy-a-flask-application-on-an-ubuntu-vps
+
+#### Flask Project Structure
+	https://www.digitalocean.com/community/tutorials/how-to-structure-large-flask-applications
