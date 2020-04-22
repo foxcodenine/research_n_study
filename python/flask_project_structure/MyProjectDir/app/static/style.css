@@ -1,0 +1,111 @@
+* {
+    color: blue;
+    background-color: rgb(243, 241, 210);
+}
+
+div {
+    width: 90%;  
+    margin: 15px auto;
+    height: 100%;
+    padding: 15px;
+    overflow: auto;
+}
+
+
+div.base {
+    border: 1px solid rgb(214, 81, 81);  
+
+}
+
+.base {
+    color: rgb(214, 81, 81)
+}
+
+
+
+
+
+div.included{
+    border: 1px solid rgb(52, 179, 52);
+}
+
+.included{
+    color:rgb(52, 179, 52);
+}
+
+
+
+div.index {
+    border: 1px solid blue;    
+}
+
+.index{
+    color:blue;
+}
+
+div.typicalpage {
+    border: 1px dashed rgb(152, 111, 180); 
+
+}
+
+.typicalpage{
+    color:rgb(152, 111, 180);
+
+}
+
+
+.profile_pic {
+    float: left;     
+}
+
+
+figure {
+    margin: 0;}
+
+img {
+    height: 200px;
+    margin: 0 15px 0 0;}
+
+
+    .input_box {
+        margin: 5px;
+        height: 25px;
+        background-color: lavenderblush;
+        border: 1px solid lightslategray;
+        float: left;
+    }
+    .input_file {
+        margin: 5px;
+        height: 27px;
+        background: lavenderblush;
+        border: 1px solid lightslategray;        
+        display: inline-block;
+        float: left;     
+    }
+
+    input[type="file"] {
+        background: lavenderblush;
+        height: 25px;
+        padding: 0px;
+        color: rgb(152, 111, 180);
+        margin: auto;
+    }
+
+    .sub_btn {
+        margin: 5px;
+        height: 28px;
+        background-color: lavenderblush;
+        border: 1px solid lightslategray;
+        float: left;
+        border-radius: 10px;
+        color: rgb(152, 111, 180);
+    }
+    .sub_btn:hover {
+        border: 2px solid rgb(152, 111, 180);
+        cursor: pointer;
+    }
+
+    h2, p {
+        color: inherit;
+    }
+    

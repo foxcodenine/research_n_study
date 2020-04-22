@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %} Login Page {% endblock %}
+
+{% block body %}
+    <div class="typicalpage">
+        <h2 class="typicalpage">this is the signup page!</h2>
+        <form action="{{ url_for('public_view.signup') }}" method="POST">
+            {{ form.csrf_token}}
+            {{ form.name(class="input_box", placeholder="name",) }}
+            {{ form.surname(class="input_box", placeholder="surname") }}
+            {{ form.email(class="input_box", placeholder="email") }}
+            {{ form.password(class="input_box", placeholder="password") }}
+
+            <span class="input_file"><input type="file" ></span>
+            <input type="submit" class="sub_btn">
+        </form>
+    </div>
+    {% include 'include.html' %}
+{% endblock %}
