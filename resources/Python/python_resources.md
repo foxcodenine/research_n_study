@@ -14,3 +14,9 @@
 
 #### Flask Project Structure
 	https://www.digitalocean.com/community/tutorials/how-to-structure-large-flask-applications
+
+#### Connect Flask to a Database with Flask-SQLAlchemy
+	https://hackersandslackers.com/flask-sqlalchemy-database-models/
+
+#### Creating Your First Flask Application	
+	https://hackersandslackers.com/your-first-flask-application
