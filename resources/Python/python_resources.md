@@ -1,6 +1,11 @@
 #### Lerning Flask Sites:
 
 	https://pythonise.com/series/learning-flask
+	
+	https://pythonise.com/series/learning-flask/flask-error-handling
+
+	https://www.youtube.com/watch?v=mBKKZN1MMBM
+
 
 #### Revising Python:
 	https://www.w3schools.com/python/default.asp

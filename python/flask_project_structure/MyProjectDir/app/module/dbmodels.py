@@ -1,7 +1,4 @@
-from app import app
-from flask_sqlalchemy import SQLAlchemy
-
-db = SQLAlchemy(app)
+from app import db
 
 class Base(db.Model):
     __abstract__  = True

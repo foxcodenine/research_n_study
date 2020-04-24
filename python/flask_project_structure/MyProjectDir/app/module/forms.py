@@ -1,9 +1,12 @@
 from flask_wtf import FlaskForm 
-from wtforms import StringField, IntegerField, HiddenField, PasswordField
 from flask_wtf.file import FileField, FileAllowed
-from flask_uploads import UploadSet, IMAGES
+from wtforms import StringField, IntegerField, HiddenField, PasswordField
+from wtforms.validators import Length, InputRequired, Email
+from flask_uploads import IMAGES
+
+
 import string
-# app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024
+
 # ______________________________________________________________________
 
 def pass_val(_str):
@@ -37,8 +40,20 @@ def pass_val(_str):
 
 class AddUser(FlaskForm):
 
-    name = StringField('Name')
-    surname = StringField('Surname')
-    email = StringField('Email')
-    password = PasswordField('Password')
-    profile_pic = FileField('Profile Image', validators=[FileAllowed(IMAGES)])
+    # In template <forms> remember to add enctype="multipart/form-data" AND novalidate
+
+    name = StringField('Name', validators=[InputRequired(message='name required!')])
+
+    surname = StringField('Surname', validators=[InputRequired(message='surname required!')])
+
+    email = StringField('Email',validators=[InputRequired(message='email required!'), Email()])
+
+    password = PasswordField('Password',validators=[InputRequired(message='password required!'), Length(min=6)])
+
+    image = FileField('Profile Image')
+
+
+# ______________________________________________________________________
+
+# 1. Add custom validators to password
+# 2. Add file validators to image
