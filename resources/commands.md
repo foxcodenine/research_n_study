@@ -245,6 +245,26 @@ $ sudo certbot --authenticator standalone --installer apache -d foxhost9.com --p
 	
 	$ sudo service apache2 restart
 
+
+> https://stackoverflow.com/questions/1100343/apache-redirect-from-non-www-to-www
+
+	Using the rewrite engine is a pretty heavyweight way to solve this problem. 
+	Here is a simpler solution:
+	
+	<VirtualHost *:80>
+	    ServerName example.com
+	    Redirect permanent / http://www.example.com/
+	</VirtualHost>
+	
+	<VirtualHost *:80>
+	    ServerName www.example.com
+	    # real server configuration
+	</VirtualHost>
+
+	And then you'll have another <VirtualHost> section with ServerName www.example.com for 
+	your real server configuration. Apache automatically preserves anything after the / when 
+	using the Redirect directive, which is a common misconception about why this method won't 
+	work (when in fact it does).
 ##
 ##
 
@@ -288,25 +308,35 @@ $ sudo certbot --authenticator standalone --installer apache -d foxhost9.com --p
 	$ sudo mysql -u root -p
 	$ ******* 
 
-	To view a List of MySQL Users:
+To view a List of MySQL Users:
+
 	mysql> SELECT User,Host FROM mysql.user;
 
-	To create a new user example: admin on localhost with password ****: 
+To create a new user example: admin on localhost with password ****: 
+
 	mysql> CREATE USER 'admin'@'localhost' IDENTIFIED BY '****';
 
-	To delete a user:
+To delete a user:
+
 	mysql> DROP USER 'admin'@'localhost';
 
-	To update host:
+To update host:
+
 	mysql> UPDATE mysql.user SET host="localhost" WHERE user="admin";
 
-	To Grant permissions to a user.
+To Grant permissions to a user.
+
 	mysql> GRANT ALL PRIVILEGES ON * . * TO 'admin'@'localhost';
 
-	Once you have finalized the permissions that you want to set up for 
-	your new users, always be sure to reload all the privileges.
+Once you have finalized the permissions that you want to set up for your new users, always be sure to reload all the privileges.
+
 	mysql> FLUSH PRIVILEGES;
 
+to stop, start or restart mysql:
+
+	$ sudo service mysql stop;
+	$ sudo service mysql start;
+	$ sudo service mysql restart;
 
 ### Setting up workbench:
 
@@ -367,5 +397,95 @@ $ sudo certbot --authenticator standalone --installer apache -d foxhost9.com --p
 	pm2 list running apps 
 	$ sudo pm2 list
 
+## Python on Ubuntu
+
+#### to install python 
+	$ python
+	*python-minimal
+	*python3
+	Try: sudo apt install <seleced package>
+
+	& sudo apt install python3
+
+to install pip:
+	
+	$ sudo apt install python-pip 
+	or
+	$ sudo apt install python3-pip
+
+install pipenv
+
+	$ pip install pipenv 
+	or
+	$ pip3 install pipenv
 
 
+## Chmod 
+
+	https://www.linuxquestions.org/questions/linux-software-2/chmod-codes-list-142654/
+	https://www.howtogeek.com/437958/how-to-use-the-chmod-command-on-linux/
+
+to check permission of files in folder:
+
+	$ ls -l
+
+	drwx-xr-xr-x root ubuntu  4096 Aug 23  08:02  archive
+
+	d is for dir
+	rwx are user permision
+	-xr are group permision
+	r-x are others permision
+	root is owner /user
+	ubuntu us group
+
+Chmod Codes list:
+	
+
+
+	u = user
+	g = group
+	o = other (not user or group)
+	a = all
+
+	+ = add permissions
+	- = remove permissions
+
+	r = read
+	w = write
+	x = execute
+	t = sticky bit
+	
+	--- means no permissions have been granted at all
+	rwx means full permissions have been granted
+
+	so to add read permissiones for people in the files group:
+	$ sudo chmod g+r filename.py
+
+	--- “=” operator means we wipe out any existing permissions and set the ones specified.
+	$ chmod u=rw,og=r new_file.txt
+
+	___________________________________________________________
+
+	0 == --- == no access
+	1 == --x == execute
+	2 == -w- == write
+	3 == -wx == write / execute
+	4 == r-- == read
+	5 == r-x == read / execute
+	6 == rw- == read / write
+	7 == rwx == read / write / execute
+
+	OWNER  GROUP   OTHER
+	r w x  r w x   r w x 
+	1 1 1  1 0 1   1 0 1 
+	  7      5       5  
+	  |______|_______|
+	         |   
+	        755
+
+	so to set `read / write / execute` for owner and `read / execute` for group and all:
+	
+	$ sudo chmod 755 filname.py
+
+	
+	
