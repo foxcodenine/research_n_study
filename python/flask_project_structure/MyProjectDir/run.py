@@ -1,9 +1,6 @@
 from app import app
-from uuid import uuid4
 
 
-app.config.from_object('config')
-app.config['SECRET_KEY'] = uuid4().hex
 
 
 if __name__ == '__main__':

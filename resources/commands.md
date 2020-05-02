@@ -487,5 +487,9 @@ Chmod Codes list:
 	
 	$ sudo chmod 755 filname.py
 
+
+### remove app from ubuntu
+	$ sudo apt-get remove --purge sublime-text-installer
+
 	
 	

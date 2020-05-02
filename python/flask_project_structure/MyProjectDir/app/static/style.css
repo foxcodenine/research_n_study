@@ -118,6 +118,20 @@ img {
         color: rgb(152, 111, 180);
         margin: auto;
     }
+    .checkbox{
+        transform: scale(1.2);
+        border: 1px solid lightslategray;
+    }
+    .remember {
+        height: 27px;
+        float: left;
+        margin: 5px 10px 0 0;
+        border: 1px solid lightslategray; 
+        padding-right: 5px;
+        color:rgb(152, 111, 180);
+    }
+    p.remember {margin: 0;}
+
 
     .sub_btn {
         margin: 5px;
@@ -137,12 +151,26 @@ img {
         color: inherit;
     }
     
-
-    .list_error {
-        color: crimson;
+    ul.list_error{
+        list-style-type: none;
+        margin: 0;
         padding: 0;
-        position: absolute;
-        top: 165px;
-        margin-left: -20px;
+        clear: both;
+        width: 100%;
+        display: block;
+        border: 1px solid snow;
+        height: 18px;
+        background-color: snow;
+        
+    }
+    li.list_error {
+        color: crimson;
+        display: block;
+        margin: 0 0 0 20px;
+        padding: 0;
+        float: left;      
     }
 
+.smaller {
+    font-size: smaller;
+}

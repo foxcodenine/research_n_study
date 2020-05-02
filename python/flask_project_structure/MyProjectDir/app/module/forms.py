@@ -1,6 +1,7 @@
 from flask_wtf import FlaskForm 
 from flask_wtf.file import FileField, FileAllowed
-from wtforms import StringField, IntegerField, HiddenField, PasswordField
+from wtforms import StringField, IntegerField, HiddenField, \
+    PasswordField, BooleanField
 from wtforms.validators import Length, InputRequired, Email
 from flask_uploads import IMAGES
 
@@ -54,6 +55,13 @@ class AddUser(FlaskForm):
 
 
 # ______________________________________________________________________
+
+
+class LoginUser(FlaskForm):
+    email = StringField('Email', validators=[InputRequired('Username is required!')])
+    password = PasswordField('Password', validators=[InputRequired('Password is required!')])
+    remember = BooleanField('Remember me')
+
 
 # 1. Add custom validators to password
 # 2. Add file validators to image

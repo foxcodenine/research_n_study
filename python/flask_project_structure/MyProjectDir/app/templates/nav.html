@@ -1,9 +1,14 @@
 <nav class="nav">
     <ul class="link_btn">
-        <li class="link_btn">button</li>
-        <li class="link_btn">button</li>
-        <li class="link_btn">button</li>
-        <li class="link_btn">button</li>
-        <li class="link_btn">button</li>
+        {% if not user %}
+        <li class="link_btn"><a href="{{ url_for('public_view.signup') }}">SigeUp</a></li>
+        <li class="link_btn"><a href="{{ url_for('public_view.login') }}">LogeIn</a></li>
+        {% endif %}
+        {% if user %}
+        <li class="link_btn"><a href="{{ url_for('index') }}">Index</a></li>        
+        <li class="link_btn"><a href="{{ url_for('user_view.profile') }}">Profile</a></li>
+        <li class="link_btn"><a href="{{ url_for('user_view.logout') }}">SignOut</a></li>
+        {% endif %}
+
     </ul>
 </nav>

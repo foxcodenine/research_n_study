@@ -5,20 +5,41 @@
 {% block body %}
     <div class="typicalpage">
         <h2 class="typicalpage">this is the signup page!</h2>
+
+        <ul class="list_error">
+            
+            {% for error in form.name.errors  %} <li class="list_error">{{ error }}</li> {% endfor %}
+
+            {% for error in form.surname.errors  %} <li class="list_error">{{ error }}</li> {% endfor %}
+
+            {% for error in form.email.errors  %} <li class="list_error">{{ error }}</li> {% endfor %}
+
+            {% for error in form.password.errors  %}<li class="list_error">{{ error }}</li>{% endfor %}
+
+            {% with messages = get_flashed_messages() %}
+            <ul>
+                {% for message in messages %}
+                <li class="list_error">{{ message }}</li>
+                {% endfor %}
+            </ul>
+            {% endwith %}
+
+            {% for error in form.image.errors  %}<li class="list_error">{{ error }}</li>{% endfor %}
+
+        </ul>
+        <br>
+
         <form action="{{ url_for('public_view.signup') }}" method="POST" enctype="multipart/form-data" novalidate>
             {{ form.csrf_token}}
             
             {{ form.name(class="input_box", placeholder="name",) }}
-            {% for error in form.name.errors  %} <ul><li class="list_error">{{ error }}</li></ul> {% endfor %}
 
             {{ form.surname(class="input_box", placeholder="surname") }}
-            {% for error in form.surname.errors  %} <ul><li class="list_error">{{ error }}</li></ul> {% endfor %}
-
+                        
             {{ form.email(class="input_box", placeholder="email") }}
-            {% for error in form.email.errors  %} <ul><li class="list_error">{{ error }}</li></ul> {% endfor %}
-
+            
+            
             {{ form.password(class="input_box", placeholder="password") }}
-            {% for error in form.password.errors  %} <ul><li class="list_error">{{ error }}</li></ul> {% endfor %}
 
             <span class="input_file">
                 <!-- <input type="file" name="filefile"  > -->

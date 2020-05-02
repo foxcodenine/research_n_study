@@ -25,7 +25,7 @@ class AddUser(FlaskForm):
 
     email = StringField('Email',validators=[InputRequired(message='email required!')])
 
-    password = PasswordField('Password',validators=[InputRequired(message='password required!'), Length(min=6)])
+    password = PasswordField('Password',validators==[InputRequired(message='password required!'), Length(min=6)])
 
     # image = FileField('Profile Image')
 

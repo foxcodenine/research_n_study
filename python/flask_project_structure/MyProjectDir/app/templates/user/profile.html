@@ -5,13 +5,15 @@
 {% block body %}
     <div class="typicalpage">
         <figure >
-            <img src="{{ url_for('static', filename='./photos/lama_photo.webp') }}" alt="image not loaded" class="profile_pic">
+            
+            <img src="{{ url_for('static', filename=user.image) }}" alt="image not loaded" class="profile_pic">
+            
         </figure>
         <article class="typicalpage">
             <h2 >this is the profile page!</h2> 
-            <p>name surname</p>
-            <p>email</p>
-            <p>password</p>
+            <p>{{ user.name ~ ' ' ~ user.surname }}</p>
+            <p>{{ user.email }}l</p>
+            <p class="smaller">{{ user.password }}</p>
         </article>
              
     </div>

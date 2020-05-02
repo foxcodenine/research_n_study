@@ -5,6 +5,38 @@
 {% block body %}
     <div class="typicalpage">
         <h2 class="typicalpage">this is the login page!</h2>
+
+        <ul class="list_error">
+            
+            {% for error in form.email.errors  %} <li class="list_error">{{ error }}</li> {% endfor %}
+
+            {% for error in form.password.errors  %}<li class="list_error">{{ error }}</li>{% endfor %}
+
+            {% with messages = get_flashed_messages() %}
+            <ul>
+                {% for message in messages %}
+                <li class="list_error">{{ message }}</li>
+                {% endfor %}
+            </ul>
+            {% endwith %}
+
+
+        </ul>
+        <br>
+
+        <form action="{{ url_for('public_view.login') }}" method="POST" enctype="multipart/form-data" novalidate>
+            {{ form.csrf_token}}
+                   
+            {{ form.email(class="input_box", placeholder="email") }}
+           
+            {{ form.password(class="input_box", placeholder="password") }}
+
+            
+
+            <span class="input_box remember">{{ form.remember(class=" checkbox") }}Remember me</span>
+
+            <input type="submit" class="sub_btn"> 
+        </form>
     </div>
     {% include 'include.html' %}
 {% endblock %}
