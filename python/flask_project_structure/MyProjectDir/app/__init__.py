@@ -6,6 +6,7 @@ from  flask_login import LoginManager, UserMixin, login_user ,login_required, \
     logout_user, logout_user, current_user, logout_user
 from flask import abort
 
+
 app = Flask(__name__, instance_relative_config=True)
 
 # setup flask-uploads set (the set it the var photo, 
@@ -27,6 +28,7 @@ login_manager.login_view = 'public_view.login' # <- this  redirect to 'login' if
 
 # need to be after app before app.register_blueprint()
 from .module.views import public_view, user_view
+from app.module.dbmodels import Users
 
 
 # ______________________________________________________________________
@@ -39,15 +41,22 @@ app.register_blueprint(user_view)
 
 @app.route('/')
 def index():
-    print(app.config['SECRET_KEY'])
+
     user = False
+    profiles = None
 
     try:
         if current_user.id:
             user = True
-    except AttributeError:
-       pass
-    return render_template('index.html', user=user)
+
+            profiles = Users.query.all()
+    
+
+    except AttributeError:        
+        pass
+
+    
+    return render_template('index.html', user=user, profiles=profiles)
 
 
 # ______________________________________________________________________
@@ -58,7 +67,7 @@ def page_not_found(e):
 
 @app.errorhandler(413)
 def file_to_large(e):
-    return "Error 404 - File to large", 413
+    return "Error 413 - File to large", 413
 
 # ______________________________________________________________________
 

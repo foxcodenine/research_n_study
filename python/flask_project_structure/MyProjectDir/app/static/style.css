@@ -174,3 +174,46 @@ img {
 .smaller {
     font-size: smaller;
 }
+
+.profile {
+    border: 1px solid sienna;
+    padding: 5px;
+    margin: 5px;
+    float: left;
+    width: min-content;
+    text-align: center;
+    display: block;
+    background-color: whitesmoke;
+    width: 200px;
+    overflow: hidden;
+    
+  
+}
+
+.timelineIMG {
+    margin: 0;
+    max-height: 195px;
+  
+    overflow: hidden;
+}
+
+.timelineH6 {
+    margin: 5px;
+    color: sienna;
+    background-color: whitesmoke;
+    font-family: 'ubuntu';
+}
+
+.profiles_container {
+    margin: 10 auto;
+    padding: 0px;
+}
+
+.contIMG {
+    height: 150px;
+    width: 195px;
+    margin:  auto;
+    overflow: hidden;
+    padding: 0;
+    background-color: whitesmoke;
+}

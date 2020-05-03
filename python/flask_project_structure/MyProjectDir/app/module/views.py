@@ -46,8 +46,8 @@ def signup():
         newUser = Users(name, surname, email, password, image_url, role=0)
         db.session.add(newUser)
         db.session.commit()                                  
-
-        return redirect(url_for('index'))    
+        login_user(newUser)
+        return redirect(url_for('user_view.profile'))    
 
     return render_template('public/signup.html', form=form)
 # ______________________________________________________________________
@@ -71,7 +71,7 @@ def login():
 
         if check_password_hash(logged_user.password, password):
             remember = form.remember.data
-            print('>>>>',remember)
+          
             login_user(logged_user, remember=remember)
             return redirect(url_for('user_view.profile'))
         else :
