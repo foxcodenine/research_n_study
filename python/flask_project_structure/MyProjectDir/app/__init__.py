@@ -6,8 +6,21 @@ from  flask_login import LoginManager, UserMixin, login_user ,login_required, \
     logout_user, logout_user, current_user, logout_user
 from flask import abort
 
+from logging import FileHandler, WARNING
+
+
+
 
 app = Flask(__name__, instance_relative_config=True)
+
+file_handler = FileHandler('errorlog.txt')
+file_handler.setLevel(WARNING)
+
+app.logger.addHandler(file_handler)
+
+
+
+
 
 # setup flask-uploads set (the set it the var photo, 
 #                         'photos' is the name used in UPLOADED_PHOTOS_DEST

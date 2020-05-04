@@ -28,7 +28,7 @@ def user_loader(user_id):
 @public_view.route('/signup', methods=['POST', 'GET'])
 def signup():
 
-    form = AddUser()
+    form = AddUser(CSRF_ENABLED = True)
 
     if form.validate_on_submit():
         name = form.name.data
@@ -54,7 +54,7 @@ def signup():
 
 @public_view.route('/login', methods=['POST', 'GET'])
 def login():
-    form = LoginUser()
+    form = LoginUser(CSRF_ENABLED = True)
 
     if form.validate_on_submit():
 
@@ -91,7 +91,7 @@ def profile():
     
     return render_template('user/profile.html', user=user)
 
-
+# ______________________________________________________________________
 @user_view.route('logout')
 @login_required
 def logout():
