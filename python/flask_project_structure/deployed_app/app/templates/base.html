@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>
+            {% block title %}Basic{% endblock %}
+        </title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    </head>
+    <body >
+        <div class="base">
+            {% include 'nav.html' %}
+            <h2 class="base">this is the base template!</h2>
+            {% block body %} 
+                <h2 class="base">this is only visible on base page!</h2>
+            {% endblock %}
+        </div>
+    </body>
+</html>

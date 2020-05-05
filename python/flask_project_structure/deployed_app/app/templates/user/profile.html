@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %} Profile {% endblock %}
+
+{% block body %}
+    <div class="typicalpage">
+        <figure >
+            
+            <img src="{{ url_for('static', filename=user.image) }}" alt="image not loaded" class="profile_pic">
+            
+        </figure>
+        <article class="typicalpage">
+            <h2 >this is the profile page!</h2> 
+            <p>{{ user.name ~ ' ' ~ user.surname }}</p>
+            <p>{{ user.email }}</p>
+            <p class="smaller">{{ user.password }}</p>
+        </article>
+             
+    </div>
+    {% include 'include.html' %}
+{% endblock %}
