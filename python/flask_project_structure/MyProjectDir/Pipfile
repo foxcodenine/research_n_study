@@ -19,6 +19,7 @@ Werkzeug = "==0.15.6"
 WTForms = "==2.2.1"
 cryptography = "*"
 python-dotenv = "*"
+flask-caching = "*"
 
 [requires]
 python_version = "3.8"

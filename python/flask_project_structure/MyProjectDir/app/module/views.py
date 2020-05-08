@@ -1,6 +1,7 @@
 from flask import Blueprint, render_template, request, redirect, url_for, flash
 from werkzeug.security import generate_password_hash, check_password_hash
 
+from app import cache
 from app import photos
 from app import db
 from app import login_manager ,login_user, login_required, current_user,\
@@ -94,6 +95,7 @@ def profile():
 # ______________________________________________________________________
 @user_view.route('logout')
 @login_required
+@cache.cached(timeout=10)
 def logout():
     logout_user()
     return redirect(url_for('index'))

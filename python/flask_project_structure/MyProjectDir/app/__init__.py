@@ -8,16 +8,12 @@ from flask import abort
 
 from logging import FileHandler, WARNING
 
+from flask_caching import Cache
+
 
 
 
 app = Flask(__name__, instance_relative_config=True)
-
-file_handler = FileHandler('errorlog.txt')
-file_handler.setLevel(WARNING)
-
-app.logger.addHandler(file_handler)
-
 
 
 
@@ -29,11 +25,23 @@ photos = UploadSet('photos', IMAGES)
 
 app.config.from_object('config')
 
+# https://flask.palletsprojects.com/en/1.1.x/logging/#basic-configuration
+if not app.debug:
+    file_handler = FileHandler('errorlog.txt')
+    file_handler.setLevel(WARNING)
+
+    app.logger.addHandler(file_handler)
+
 # setup flask-uploads
 configure_uploads(app, photos)
 
 # setup sqlalchemy db
 db = SQLAlchemy(app) 
+
+#setup flask_cache
+app.config["CACHE_TYPE"] = 'simple'
+#app.config["CACHE_DEFAULT_TIMEOUT"] = 3000
+cache = Cache(app)
 
 # setup flask-login 
 login_manager = LoginManager(app)
