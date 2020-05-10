@@ -132,12 +132,12 @@ matthew.isHuman = true; //<- overwrite inherite property
 
 matthew.printIntro();
 
-
+console.log(matthew);
 
 `Syntax   Object.create(proto, [propertiesObject])`
 
-const james = Object.create(dummy, {name: {value:'James'}, isHuman: {value: true}})
-
+const james = Object.create(dummy, {name: {value:'James'}, isHuman: {value: true}});
+console.log(james);
 
 console.log('G','_______________________________________________________________________________________')
 
@@ -167,13 +167,103 @@ fox.printDesc();
 console.log(fox.kingdom);
 console.log(fox.__proto__);
 
+console.log('H','_______________________________________________________________________________________')
+
+// https://javascript.info/class-inheritance
 
 
 
 
+class Animal {
+    constructor(name) {
+      this.speed = 0;
+      this.name = name;
+    }
+    run(speed) {
+      this.speed = speed;
+      console.log(`${this.name} runs with speed ${this.speed}.`);
+    }
+    stop() {
+      this.speed = 0;
+      console.log(`${this.name} stands still.`);
+    }
+  }
+  
 
 
 
+class Rabbit extends Animal {
+    hide() {
+      console.log(`${this.name} hides!`);
+    }
+  }
+  
+  let rabbit = new Rabbit("White Rabbit");
+  
+  rabbit.run(5); // White Rabbit runs with speed 5.
+  rabbit.hide(); // White Rabbit hides!
+
+
+
+
+console.log('I','_______________________________________________________________________________________')
+
+// https://thecodebarbarian.com/an-overview-of-es6-classes
+
+
+// Static Getters and Setters
+
+
+class Human {
+    constructor(name, surname, age, gender) {
+        this.name = name;
+        this.surname = surname;
+        this.age = age;
+        this.gender = gender;
+    }
+    greeting() {
+        console.log(`Hi my name is ${this.name}!`)
+    }
+}
+
+
+
+class Runner extends Human{
+    constructor(name, surname, age, gender, club) {
+        super(name, surname, age, gender);
+        this.club = club;
+    }
+
+    get runningClub() {
+        return this.club;
+    }
+
+    set runningClub(newClub) {
+        this.club = newClub;
+    }
+
+    static shout() {
+        console.log('I\'m a runner!')
+    }
+
+}
+
+
+let mark = new Runner('Mark', 'Cassar', 16, 'M', 'St_Edwards');
+
+mark.greeting();
+console.log(mark);
+
+
+console.log(mark.runningClub);
+// same as:
+console.log(mark.club);
+
+
+mark.runningClub = 'Argoss';
+console.log(mark.runningClub);
+
+Runner.shout();
 
 
 
