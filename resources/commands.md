@@ -198,7 +198,9 @@ $ sudo chown -R newUser folderName/
 
 	This will enable the revers proxy,and adds support for proxying HTTP connections
 	$ sudo a2enmod proxy_http
-	To enable ower site
+
+#### To enable ower site
+
 	$ sudo a2ensite foxhost9.com.conf
 	$ sudo service apache2 reload  or  $ sudo systemctl reload apache2
 
@@ -208,7 +210,7 @@ $ sudo chown -R newUser folderName/
 
 ##### OR better or if doesn't work:
 
-$ sudo certbot --authenticator standalone --installer apache -d foxhost9.com --pre-hook "systemctl stop apache2" --post-hook "systemctl start apache2"
+	$ sudo certbot --authenticator standalone --installer apache -d mfp.foxhost9.com --pre-hook "systemctl stop apache2" --post-hook "systemctl start apache2"
 
   	
 
@@ -486,10 +488,6 @@ Chmod Codes list:
 	so to set `read / write / execute` for owner and `read / execute` for group and all:
 	
 	$ sudo chmod 755 filname.py
-
-
-### remove app from ubuntu
-	$ sudo apt-get remove --purge sublime-text-installer
 
 	
 	

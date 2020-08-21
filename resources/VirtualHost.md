@@ -10,7 +10,7 @@ inside `www.mydomain.com.conf` at \etc\apache2\sites-available\
 	3	        WSGIScriptAlias / /var/www/cm/flaskapp.wsgi
 	4	        <Directory /var/www/cm>
 	5	            Order allow,deny
-	6	            Allow from all 
+	6	            Allow from all
 	7	        </Directory>
 	8	        Alias /static /var/www/cm/static
 	9	        <Directory /var/www/cm/static/>
@@ -39,12 +39,12 @@ inside `www.mydomain.com.conf` at \etc\apache2\sites-available\
 
 ##### To view apache log errors
 
-	$ sudo tail -f /var/log/apache2/error.log 
+	$ sudo tail -f /var/log/apache2/error.log
 
 
 ##### wsgi file (Web Server Gateway Interface)
 
-Sample:
+Sample: flaskapp.wsgi
 
 	1		#!/usr/bin/python
 	2		activate_this = '/home/ubuntu/.local/share/virtualenvs/cm-Mg75QJy5/bin/activate_this.py'
@@ -55,7 +55,7 @@ Sample:
 	7		sys.path.insert(0,"/var/www/cm/")
 	8		
 	9		from coin_manager import app as application
-	10		application.secret_key = '34qtGQ#T$tWEet#$reasgEWRdsfGSge' 
+	10		application.secret_key = '34qtGQ#T$tWEet#$reasgEWRdsfGSge'
 
 wsgi uses python code.
 
@@ -67,21 +67,21 @@ It need to be change  according  virtualenv dir.
 
 If you are using pipenv and need path to activate_this.py
 
-	$ pipenv 
+	$ pipenv
 	gives you all commands
-	
+
 	to get path:
 	$ pipenv --venv
  	`/home/ubuntu/.local/share/virtualenvs/cm-Mg75QJy5`
 
 (7) In this line you need to update the path to you app dir.
 
-(9) Here you need to update the entry point {coin_manager} to you app running file. 
+(9) Here you need to update the entry point {coin_manager} to you app running file.
 
 Generally it is the:
-	
+
 	$ python app.py  or  $ python run.py   .....etc
-	
+
 	in the above is the app  or  run
 
 (10) Is setting up you secret_key
@@ -95,6 +95,8 @@ Generally it is the:
 ##### For WSGIScriptAlias we need package `libapache2-mod-wsgi`
 
 	to check if it is already installed
+
+	$ sudo apt-get install libapache2-mod-wsgi-py3            # <-- for python3
 
 	$ sudo apt -a list libapache2-mod-wsgi
 
@@ -113,7 +115,7 @@ To enable ower site
 	$ sudo service apache2 reload  or  $ sudo systemctl reload apache2
 
 restart the server:
-	
+
 	$ sudo service apache2 restart
 
 
@@ -137,14 +139,14 @@ restart the server:
 
 	stop 			Stop the Apache HTTP Server.
 
-	restart 		Restart the Apache Web Server, 
+	restart 		Restart the Apache Web Server,
 					If the Server is not running apachectl will start the server.
 
 	fullstatus 		Display Full status report.
 
 	status 			Display brief status of the web server.
 
-	graceful 		graceful restart, reload the apache configuration 
+	graceful 		graceful restart, reload the apache configuration
 					without interrupting currently established connections.
 
 	graceful-stop 	Stop the server without aborting currently open connections.
@@ -157,7 +159,7 @@ To start Apache:
 	$ sudo apachectl start
 
 To restart the Web Server, run:
-	
+
 	$ sudo apachectl restart
 
 The graceful command will restart the apache web server without interrupting current open connections and Open connections are allowed to complete before being shut down. This is A better way to restart the web server after a change to the configuration file.
@@ -176,7 +178,50 @@ On debian, Ubuntu Linux:
 
 The configtest command will cause Apache to read the config files and report any configuration errors.
 
-	$ sudo apachectl configtest  or  sudo apachectl -t 
-	
+	$ sudo apachectl configtest  or  sudo apachectl -t
+
+	# or $ sudo apache2ctl configtest
+
 	you sould be in the *.conf file dir (/etc/apache2/sites-available)
 
+
+
+
+	#!/usr/bin/python
+	activate_this = '/home/ubuntu/.local/share/virtualenvs/myFlaskProject-KcAN6i9d/bin/activate_this.py'
+	execfile(activate_this, dict(__file__=activate_this))
+	import sys
+	from uuid import uuid4
+	import logging
+	logging.basicConfig(stream=sys.stderr)
+	sys.path.insert(0,"/var/www/myFlaskProject/")
+
+	from run import app as application
+	application.secret_key = uuid4().hex
+
+
+
+How to Install Pip on Ubuntu 18.04
+https://linuxize.com/post/how-to-install-pip-on-ubuntu-18.04/
+
+Can't install mod_wsgi with the latest stable Python version (Python3.8)
+on Ubuntu 18.04 #490
+https://github.com/GrahamDumpleton/mod_wsgi/issues/490
+
+
+
+
+Uninstall python 3.6
+https://askubuntu.com/questions/911448/uninstall-python-3-6
+
+
+
+
+
+Nginx Gunicorn Flask
+
+How To Set Up uWSGI and Nginx to Serve Python Apps on Ubuntu 14.04
+https://www.digitalocean.com/community/tutorials/how-to-set-up-uwsgi-and-nginx-to-serve-python-apps-on-ubuntu-14-04#definitions-and-concepts
+
+How To Serve Flask Applications with Gunicorn and Nginx on Ubuntu 18.04
+https://www.digitalocean.com/community/tutorials/how-to-serve-flask-applications-with-gunicorn-and-nginx-on-ubuntu-18-04
