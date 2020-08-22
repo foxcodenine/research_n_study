@@ -531,6 +531,212 @@ Redis Lists are simply lists of strings, sorted by insertion order. It is possib
     2) "fiat"
     3) "honda"
 
+#### Sorted Sets 
+Every member is associated with a "score"
+
+Score Properties 
+* Score is required 
+* Must be a float 
+* Score of 500 = 500.0 
+* Score is NOT unique, Values are
+
+
+ <b>ZADD</b> Adds given values to a sorted set.
+
+ <b>ZREM</b> Remove values from a sorted set.
+
+ <b>ZRANGE</b> Fetches values, ordered lowest to highest by score.
+
+ <b>ZREVRANGE</b> Fetches values, ordered highest to lowest by score.
+ 
+ <b>ZRANGEBYSCORE</b> Fetches values, but uses range of score values.
+
+ <b>ZRANK</b> Return the rank of a member with scMandyore ordered from high to low.
+
+ <b>ZREVRANK</b> Return the rank of a member with scire ordered from low to high.
+
+ <b>ZCARD</b> Returns the number of members in the sorted set.
+
+ <b>ZCOUNT</b> Return the number of elements in the sorted set atkey with a score between min and max.
+
+ <b>ZINCRBY</b> Increments the score of member in the sorted set stored at key by increment. If member does not exist in the sorted set, it is added with increment as its score.
+ The score value should be the string representation of a numeric value, and accepts double precision floating point numbers. It is possible to provide a negative value to decrement the score.
+
+ <b>ZSCORE</b> Returns the score of member in the sorted set at key.
+If member does not exist in the sorted set, or key does not exist, nil is returned.
+
+
+    > ZADD people 1990 Dorothy 1984 Chris
+    (integer) 2
+
+    > ZADD people 1986 Mandy 1984 Alan 1988 Joelle 1979 Graziella
+    (integer) 4
+
+    > ZRANGE people 0 -1
+    1) "John Doe"
+    2) "Graziella"
+    3) "Alan"
+    4) "Chris"
+    5) "Mandy"
+    6) "Joelle"
+    7) "Dorothy"
+
+####
+
+    > ZREM people "John Doe"
+    (integer) 1
+
+    > ZREVRANGE people 0 -1
+    1) "Dorothy"
+    2) "Joelle"
+    3) "Mandy"
+    4) "Chris"
+    5) "Alan"
+    6) "Graziella"
+
+####
+    
+    > ZRANK people Dorothy
+    (integer) 5
+    
+    > ZRANK people Graziella
+    (integer) 0
+
+    > ZREVRANK people Graziella
+    (integer) 5
+
+    > ZRANK pepole John
+    (nil)
+
+####
+
+    
+    > ZCARD people
+    (integer) 6
+    
+    > ZCOUNT people 1980 1989
+    (integer) 4
+
+####
+
+    
+    > ZSCORE people Dorothy
+    "1990"
+    
+    > ZINCRBY people 2 Dorothy
+    "1992"
+    
+    > ZSCORE people Dorothy
+    "1992"
+    
+    > ZINCRBY people -2 Dorothy
+    "1990"
+
+<hr>
+
+#### HASHES
+
+<b>HSET</b> Sets field in the hash stored at key to value. If key does not exist, a new key holding a hash is created. If field already exists in the hash, it is overwritten.
+
+<b>HMSET</b> Sets the specified fields to their respective values in the hash stored at key. This command overwrites any specified fields already existing in the hash. If key does not exist, a new key holding a hash is created.
+
+<b>HGET</b> Returns the value associated with field in the hash stored at key.
+
+<b>HGETALL</b>Returns all fields and values of the hash stored at key. In the returned value, every field name is followed by its value, so the length of the reply is twice the size of the hash.
+
+
+    > HSET user1 name Chris
+    (integer) 1
+
+    > HMSET user2 name Dorothy age 30 sex female city Qormi
+    OK
+
+    > HGET user2 name
+    "Dorothy"
+
+    > HGETALL user2
+    1) "name"
+    2) "Dorothy"
+    3) "age"
+    4) "30"
+    5) "sex"
+    6) "female"
+    7) "city"
+    8) "Qormi"
+
+<b>HMGET</b>Returns the values associated with the specified fields in the hash stored at key.
+For every field that does not exist in the hash, a nil value is returned.
+
+    > HMGET user1 name surname
+    1) "Chris"
+    2) (nil)
+
+<b>HDEL</b>Removes the specified fields from the hash stored at key. Specified fields that do not exist within this hash are ignored.
+
+<b>HEXISTS</b> Returns if field is an existing field in the hash stored at key.
+
+<b>HLEN</b> Returns the number of fields contained in the hash stored at key.
+
+<b>HKEYS</b> Returns all field names in the hash stored at key.
+
+    
+    > HKEYS user2
+    1) "name"
+    2) "age"
+    3) "sex"
+    4) "city"
+    
+    > HLEN user2
+    (integer) 4
+    
+    > HDEL user2 sex
+    (integer) 1
+    
+    > HEXISTS user2 sex
+    (integer) 0
+    
+    > HKEYS user2
+    1) "name"
+    2) "age"
+    3) "city"
+
+<b>HINCRBY</b>Increments the number stored at field in the hash stored at key by increment. If key does not exist, a new key holding a hash is created. If field does not exist the value is set to 0 before the operation is performed.
+
+<b>HVALS</b> Returns all values in the hash stored at key.
+
+<b>HSTRLEN</b> Returns the string length of the value associated with field in the hash stored at key. If the key or the field do not exist, 0 is returned.
+
+
+    > HINCRBY user2 age 1
+    (integer) 31
+
+    > HSTRLEN user2 name
+    (integer) 7
+
+    > HVALS user2
+    1) "Dorothy"
+    2) "31"
+    3) "Qormi"
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+ 
+
+
+
+
+
+
 
 
 
