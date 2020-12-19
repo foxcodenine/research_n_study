@@ -29,6 +29,7 @@ def create_app():
 
 app = create_app()
 CORS(app)
+
 # ______________________________________________________________________
 # ______________________________________________________________________
 # Setting up flask_uploades
@@ -108,7 +109,8 @@ def create_bucket(bucket_prefix, s3_connection):
 
     bucket_name = create_bucket_name(bucket_prefix)
     current_region = os.getenv('region')
-    print('name>', bucket_name)
+
+    # print('name ->', bucket_name)
 
     bucket_response = s3_connection.create_bucket(
 
@@ -117,7 +119,7 @@ def create_bucket(bucket_prefix, s3_connection):
         CreateBucketConfiguration = {
             'LocationConstraint': current_region
         })
-    print('\n', bucket_name, current_region)
+    # print('\n', bucket_name, current_region)
 
     return bucket_name, bucket_response    
 
@@ -152,7 +154,7 @@ def upload_s3():
 
         my_bucket_name = 'flask-uploads-acfbfed9-5fae-490c-9d35-291c9af697b3'
         
-        print('-->', image_file.__dict__)
+        # print('-->', image_file.__dict__)
         
         s3_resource.Bucket(my_bucket_name).put_object(
             Body = image_file,           # file to upload in bits
@@ -190,6 +192,8 @@ bucket name: flask-uploads-acfbfed9-5fae-490c-9d35-291c9af697b3
 '''
 # _____________________________
 
+# Receiving image file from vue frontend and saving it AWS S3 bucket
+
 @app.route('/upload_from_vue_to_s3/', methods=['GET', 'POST'])
 def upload_from_vue_to_s3():
     if request.method == 'POST' and request.files:
@@ -198,21 +202,34 @@ def upload_from_vue_to_s3():
 
         my_bucket_name = 'flask-uploads-acfbfed9-5fae-490c-9d35-291c9af697b3'
 
-
+        account = 'chris12aug@yahoo.com'
 
         s3_resource.Bucket(my_bucket_name).put_object(
             Body = image_object,
-            Key = image_name ,
+            Key = f'{account}/{image_name}' ,
             ACL = 'public-read'
         )
 
-        image_url = f'https://{my_bucket_name}.s3.{os.getenv("region")}.amazonaws.com/{image_name}'
+        
 
-        print(image_name)
-        print(image_object)
+        image_url = f'https://{my_bucket_name}.s3.{os.getenv("region")}.amazonaws.com/{account}/{image_name}'
+
+        # print(image_name)
+        # print(image_object)
     return jsonify({'message': '...image successfully uploaded to project folder!', 'image_url': image_url})
 # ______________________________________________________________________
 # ______________________________________________________________________
+
+
+@app.route('/delete_account/', methods=['POST', 'GET'])
+def delete_accout():
+
+    my_bucket_name = 'flask-uploads-acfbfed9-5fae-490c-9d35-291c9af697b3'
+
+    bucket = s3_resource.Bucket(my_bucket_name)
+    bucket.objects.filter(Prefix="chris12aug@yahoo.com/").delete()
+
+    return jsonify({'message': '...account was successfully deleted!'})
 
 if __name__ == '__main__':
     app.run()

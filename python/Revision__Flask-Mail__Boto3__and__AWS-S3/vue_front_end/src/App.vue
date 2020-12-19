@@ -13,9 +13,13 @@
         <input 
           class="form__input form__input--file" 
           type="file"
+          ref="inputFile"
           @change="onFileChange($event)">
         
-        <button class="form__btn" type="submit">Upload</button>
+        <div class="forms_buttons">
+          <button class="form__btn" type="submit">Upload</button>
+          <button class="form__btn" type="button" @click="deleteAccount()">Delete Account</button>
+        </div>
       </form>
       <div class="image">
         <img :src="imageURL" alt="Upload Profile Picture">
@@ -32,10 +36,10 @@ export default {
   name: 'app',
   data () {
     return {
-      backEndBaseURL: 'http://127.0.0.1:5000',
+      backEndBaseURL: 'http://127.0.0.1:5002',
       imageName: '',
-      imageCover: null,
-      imageURL: 'https://flask-uploads-acfbfed9-5fae-490c-9d35-291c9af697b3.s3.eu-central-1.amazonaws.com/my_fox.jpeg'
+      imageCover: '',
+      imageURL: '../img/profile.jpg'
     }
   },
   methods: {
@@ -50,7 +54,13 @@ export default {
       axios.post(path, payload)
       .then(res => {
         console.log(res);
-        this.imageURL = res.data.image_url
+        this.imageURL = res.data.image_url;
+        this.imageName = '';
+        this.imageCover = null;
+        
+        // Cleaning the input file field
+        this.$refs.inputFile.value = null
+        
       })
       .catch(err => {
         console.log(err);
@@ -78,6 +88,14 @@ export default {
       }
       this.imageCover = files[0];
       console.log(this.imageCover);
+    },
+    deleteAccount() {
+      axios.get(this.backEndBaseURL + '/delete_account/')
+      .then(res => {
+        console.log(res);
+        this.imageURL = '../img/profile.jpg';
+      })
+      .catch(err => console.log(err))
     }
   }
 }
@@ -131,28 +149,45 @@ export default {
     &--file { 
 
       &::-webkit-file-upload-button {
+        cursor: pointer;
           border: 1px solid #000;
           padding: .5rem 1rem;
           border-radius: .5rem;
           background-color:#fff;
+          &:hover {
+            background-color:  #000;
+            color: #fff;
+          }
 
       }
       &::file-selector-button {
+        cursor: pointer;
           border: 1px solid #000;
           padding: .5rem 1rem;
           border-radius: .5rem;
           background-color:#fff;
 
+          &:hover {
+            background-color:  #000;
+            color: #fff;
+          }
       }
     }
   }
   &__btn {
+    cursor: pointer;
         border: 1px solid #000;
         padding: .5rem 2rem;
         border-radius: .5rem;
         background-color: #fff;
+        min-width: 13.3rem;
 
         transition: .2s all;
+
+        &:hover {
+          background-color:  #000;
+          color: #fff;
+        }
 
         &:active {
           transform: scale(.95);
