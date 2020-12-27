@@ -8,7 +8,7 @@
 from flask import Flask, redirect, render_template, url_for, request, \
      send_from_directory, jsonify
 from flask_uploads import UploadSet, configure_uploads, IMAGES
-import os 
+import os
 
 from flask_cors import CORS
 
@@ -25,7 +25,7 @@ def create_app():
         app.config.from_object('config.ConfigDev')
     else:
         app.config.from_object('config.ConfigPro')
-    return app 
+    return app
 
 app = create_app()
 CORS(app)
@@ -34,7 +34,7 @@ CORS(app)
 # ______________________________________________________________________
 # Setting up flask_uploades
 
-# Creating a set 
+# Creating a set
 email = 'chris12aug@yahoo.com'
 
 app_images = UploadSet('images', IMAGES) # <-(A)
@@ -53,7 +53,7 @@ configure_uploads(app, app_images)
 s3_client = boto3.client('s3')
 s3_resource = boto3.resource('s3')
 
-# Note. to access the client directly via the resource 
+# Note. to access the client directly via the resource
 # s3_resource.meta.client
 
 # ______________________________________________________________________
@@ -68,7 +68,7 @@ def index():
 
 # //----- Flast-Uploads Section -----//
 
-# flask_uploades route. Upload from flask rendered_template to project folder, 
+# flask_uploades route. Upload from flask rendered_template to project folder,
 # using flask upload and display image in return.
 
 @app.route('/upload', methods=['GET', 'POST'])
@@ -79,7 +79,7 @@ def upload():
         # Get the file from your html Form from input (name='thefile)
         image_file = request.files['thefile']
         image_filename = app_images.save(image_file)
-       
+
 
         # return f'<h5>{image_filename}</h5>' #<- return file name
         # return f'<h5>{app_images.path(image_filename)}</h5>' # <- return path from project directory
@@ -89,7 +89,7 @@ def upload():
         return send_from_directory(app.config['UPLOADED_IMAGES_DEST'], image_filename, as_attachment=False) # <-display uploaded image
         # Send a file from a given directory with send_file(). This is a secure way to quickly
         # expose static files from an upload folder or something similar.
-    
+
     return render_template('upload.html', action='upload')
 
 
@@ -105,7 +105,7 @@ def create_bucket_name(bucket_prefix):
 
 
 def create_bucket(bucket_prefix, s3_connection):
-    # Creating a bucket function   
+    # Creating a bucket function
 
     bucket_name = create_bucket_name(bucket_prefix)
     current_region = os.getenv('region')
@@ -115,19 +115,19 @@ def create_bucket(bucket_prefix, s3_connection):
     bucket_response = s3_connection.create_bucket(
 
         Bucket = bucket_name,
-        
+
         CreateBucketConfiguration = {
             'LocationConstraint': current_region
         })
     # print('\n', bucket_name, current_region)
 
-    return bucket_name, bucket_response    
+    return bucket_name, bucket_response
 
 
 
 @app.route('/create_s3/<s3>/<bucket_prefix>')
 def create_s3(bucket_prefix, s3):
-    
+
     if s3 == 's3r':
         s3_connection = s3_resource
     elif s3 == 's3c':
@@ -138,7 +138,7 @@ def create_s3(bucket_prefix, s3):
 
     return f'''
             <h4>AWS bucket name: {first_bucket_name}</h4>
-            <h4>AWS response: {first_response}</h4>    
+            <h4>AWS response: {first_response}</h4>
     '''
 # _____________________________
 
@@ -147,21 +147,21 @@ def create_s3(bucket_prefix, s3):
 
 @app.route('/upload_s3', methods=['GET', 'POST'])
 def upload_s3():
-       
+
 
     if request.method == 'POST' and 'thefile' in request.files:
         image_file = request.files['thefile']
 
         my_bucket_name = 'flask-uploads-acfbfed9-5fae-490c-9d35-291c9af697b3'
-        
+
         # print('-->', image_file.__dict__)
-        
+
         s3_resource.Bucket(my_bucket_name).put_object(
             Body = image_file,           # file to upload in bits
             Key = image_file.filename,   # file name to be save (& and subfolder)
             ACL = 'public-read'          # set to public
-        )      
-        
+        )
+
 
         return '<h2>...sent to aws!</h2>'
 
@@ -175,13 +175,13 @@ def upload_s3():
 
 @app.route('/upload_from_vue/', methods=['GET', 'POST'])
 def upload_from_vue():
-    
+
     if request.files:
         image_object = request.files['imageCover']
         image_name = request.form['imageName']
         image_filename = app_images.save(storage=image_object, folder=None, name=image_name)
 
-        
+
 
 
     return jsonify({'message': '...image successfully uploaded to project folder!'})
@@ -210,7 +210,6 @@ def upload_from_vue_to_s3():
             ACL = 'public-read'
         )
 
-        
 
         image_url = f'https://{my_bucket_name}.s3.{os.getenv("region")}.amazonaws.com/{account}/{image_name}'
 
@@ -230,6 +229,10 @@ def delete_accout():
     bucket.objects.filter(Prefix="chris12aug@yahoo.com/").delete()
 
     return jsonify({'message': '...account was successfully deleted!'})
+
+
+
+
 
 if __name__ == '__main__':
     app.run()
