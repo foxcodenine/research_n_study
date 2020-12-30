@@ -70,3 +70,36 @@ and write a line at the end of apache2.conf
 and restart apache
 
     $ sudo service apache2 restart
+
+
+### to show error messages
+
+https://www.youtube.com/watch?v=0wIUci7s3gM
+
+    $ sudo nano /etc/php/8.0/apache2/php.ini
+
+    find:
+
+        error_reporting = E_ALL & ~E_DEPRECATED & ~E_STRICT
+
+    and change it to:
+    
+        error_reporting = E_ALL 
+
+    and also find:
+
+        display_errors = Off
+
+    and change it to:
+
+        display_errors = On
+
+    Save and restart apache
+
+        $ sudo service apache2 restart
+
+
+
+### to opne from a Built-in web server
+follow:
+https://www.php.net/manual/en/features.commandline.webserver.php
