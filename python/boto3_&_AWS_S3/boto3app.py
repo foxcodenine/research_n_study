@@ -18,12 +18,12 @@ from uuid import uuid4
 
 s3_client = boto3.client('s3')
 
-# or
+# or 
 
 s3_resource = boto3.resource('s3')
 
-    # You can access the client directly via the resource like so:
-    # s3_resource.meta.client.
+    # You can access the client directly via the resource like so: 
+    # s3_resource.meta.client. 
 
 
 # ______________________________________________________________________
@@ -35,43 +35,43 @@ for bucket in s3_resource.buckets.all():
 
 # # ______________________________________________________________________
 
-#     # Creating a Bucket
+#     # Creating a Bucket 
 
 
 
 # def create_bucket_name(bucket_prefix):
 #     ''' Genarated unique bucket name, with a give prefix
 #         Bucket name must be between 3 & 63 chars long'''
-
+    
 #     return ''.join([bucket_prefix, str(uuid4())])
 
 
 
 
 #     # code example to create a bucket {
-#     #
+#     # 
 #     #   s3_resource,create_bucket(Bucket=YOUR_BUCKET_NAME,
 #     #                               CreateBucketConfiguration={
-#     #                               'LocationConstraint': 'eu-west-1'})
-#     #
+#     #                               'LocationConstraint': 'eu-west-1'})    
+#     # 
 #     # }
 
 
-# # You need to provide both a bucket name and a bucket configuration where
-# # you must specify the region, which in my case is eu-west-1.
+# # You need to provide both a bucket name and a bucket configuration where 
+# # you must specify the region, which in my case is eu-west-1. 
 
 
 
 #     # get region from boto3 session {
-#     #
+#     # 
 #     #   session = boto.session.Session()
 #     #   current_region = session.region_name
-#     #
+#     # 
 #     # }
 
 
 # def cearte_bucket(bucket_prefix, s3_connection):
-#     ''' Func. crate s3 bucket.
+#     ''' Func. crate s3 bucket. 
 #         s3_connection, client or resource.
 #     '''
 
@@ -80,7 +80,7 @@ for bucket in s3_resource.buckets.all():
 #     bucket_name = create_bucket_name(bucket_prefix)
 
 #     bucket_response = s3_connection.create_bucket(
-
+        
 #         Bucket=bucket_name,
 #         CreateBucketConfiguration={
 #             'LocationConstraint': current_region
@@ -93,7 +93,7 @@ for bucket in s3_resource.buckets.all():
 
 # # Createing my 1st 2 bucket, useing client and resource respectivly:
 
-
+    
 # # first_bucket_name, first_response = cearte_bucket(
 # #                                 bucket_prefix='1st-python-bucket-',
 # #                                 s3_connection=s3_resource.meta.client)
@@ -117,7 +117,7 @@ for bucket in s3_resource.buckets.all():
 #         f.write(str(file_content) * size)
 #     return random_file_name
 
-
+   
 
 # my1st_file = create_temp_file(1, 'chrisX1.txt', '_Chris_Farrugia_')
 
@@ -130,7 +130,7 @@ for bucket in s3_resource.buckets.all():
 
 
 # my1st_bucket = s3_resource.Bucket(name='1st-python-bucket-7b4cc0b3-1854-4502-9f83-e692ad6f757d')
-# # Note: Here I am hard code the bucket name, however you have access to
+# # Note: Here I am hard code the bucket name, however you have access to 
 # # the bucket name when it is created.
 
 # my1st_object = s3_resource.Object(
@@ -139,7 +139,7 @@ for bucket in s3_resource.buckets.all():
 # )
 # # ______________________________________________________________________
 
-#     # Understanding Sub-resources
+#     # Understanding Sub-resources 
 #     # Bucket and Object are sub-resources of one another.
 
 
@@ -176,7 +176,7 @@ for bucket in s3_resource.buckets.all():
 
 # s3_resource.Object(bucket_name, first_file).upload_file(Filename=first_file)
 
-# # Or you can use the first_object instance however you'll save with the
+# # Or you can use the first_object instance however you'll save with the 
 # # object filename:
 
 # my1st_object_again.upload_file(Filename=first_file)
@@ -245,18 +245,10 @@ s3_resource.meta.client.upload_file(
 # Set file to public when upload:
 
 s3_resource.Bucket(bucket_name).upload_file(
-    './static/hollow_knight.jpeg',
+    './static/hollow_knight.jpeg', 
     Key='Hollow_Knight.jpeg',
     ExtraArgs={'ACL': 'public-read'}
 )
-# or
-
-# s3_resource.Bucket(mybucket).put_object(
-#             Body = form.image.data,
-#             Key = f'{subfolder}/{image_name}',
-#             ACL = 'public-read'
-#         )
-
 
 # ______________________________________________________________________
 
@@ -268,12 +260,12 @@ bucket_name = '1st-python-bucket-7b4cc0b3-1854-4502-9f83-e692ad6f757d'
 
 
 
-# download by Bucket
+# download by Bucket 
 
 
 s3_resource.Bucket(bucket_name).download_file(
 
-    file_in_bucket,
+    file_in_bucket, 
     f'./static/download/rev1-{file_in_bucket}'
 )
 

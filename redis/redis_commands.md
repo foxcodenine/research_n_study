@@ -718,9 +718,40 @@ For every field that does not exist in the hash, a nil value is returned.
     2) "31"
     3) "Qormi"
 
+<hr>
+
+### Data Persistence 
+#### Options 
+* RDB - Point-in-time snapshots 
+* AOF - Write operation logging 
+* Disabled 
+* Both RDB & AOF
 
 
+#### RDB 
+* Redis Database File.
+* Simplest persistence mode.
+* Single-file point-in-time representation.
+* Uses snapshot.
+* Enabled bu default.
 
+
+##### Sanpshotting 
+* Controlled by user.
+* Con be modified at rub=ntime.
+* Snapshots are produced as .rdb files.
+* <b>SAVE</b> & <b>BGSAVE</b> Commands.
+
+##### SAVE
+* Should not be called in a production env.
+
+        > save 60 1000
+
+        # Redis automatically dump the dataset to disk every 60 seconds 
+        # if at least 1000 keys changed.
+
+#### BGSAVE
+* Save the DB in background and parent continues to serve clients.
 
 
 
