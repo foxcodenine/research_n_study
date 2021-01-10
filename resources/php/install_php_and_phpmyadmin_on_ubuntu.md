@@ -3,6 +3,8 @@ How to Install PHP 8 and phpmyadmin on Ubuntu
 https://www.cloudbooklet.com/how-to-install-php-8-on-ubuntu/
 https://www.youtube.com/watch?v=vazRx1Ei8VA
 
+### NB: There is a more UPDATED version at the lunux folder: ubuntu_fresh_install.md
+
 ### Getting Started
 
     $ sudo apt update
