@@ -15,25 +15,29 @@
 
     deb [arch=amd64] http://packages.microsoft.com/repos/vscode stable main
 
-<!-- -------------------------------------------------------------------- -->
+<!-- --------------------------------------------------------------- -->
+##
 ### How to stop Nemo 20.04 (Ubuntu Budgie 20.04) double-click behavior
     $ gsettings set org.nemo.preferences click-double-parent-folder false
 
     $ sudo gsettings set org.nemo.preferences click-double-parent-folder false
 
-<!-- -------------------------------------------------------------------- -->
+<!-- --------------------------------------------------------------- -->
+##
 
 ### Ubuntu - Install Fira Code Font
 
     $ sudo apt install fonts-firacode
 
-<!-- -------------------------------------------------------------------- -->
+<!-- --------------------------------------------------------------- -->
+##
 ### Install Grub Customizer in Ubuntu 20.04 LTS
     
     $ sudo apt update
     $ sudo apt install grub-customizer
 
-<!-- -------------------------------------------------------------------- -->
+<!-- --------------------------------------------------------------- -->
+##
 
 ### Rebinding Alt+Q
 
@@ -54,7 +58,8 @@ by:
 And restart pc
 
 
-<!-- -------------------------------------------------------------------- -->
+<!-- --------------------------------------------------------------- -->
+##
     
 
 ### install git
@@ -87,7 +92,8 @@ And restart pc
     Ass SSH key
 
 
-<!-- -------------------------------------------------------------------- -->
+<!-- --------------------------------------------------------------- -->
+##
 
 ### install python
     $ sudo apt-get update
@@ -98,7 +104,8 @@ And restart pc
     $ pip3 install pipenv
 
 
-<!-- -------------------------------------------------------------------- -->
+<!-- --------------------------------------------------------------- -->
+##
 
 ### Change the Python3 default version in Ubuntu
 
@@ -127,20 +134,23 @@ Finally, check default python3 version:
 
     $ python3 --version
 
-<!-- -------------------------------------------------------------------- -->
+<!-- --------------------------------------------------------------- -->
+##
 
 Install npm on Ubuntu
 
     $ sudo apt install npm nodejs
     $ npm --version
 
-<!-- -------------------------------------------------------------------- -->
+<!-- --------------------------------------------------------------- -->
+##
 
 ### install Live server
 
     $ sudo npm install -g live-server
 
-<!-- -------------------------------------------------------------------- -->
+<!-- --------------------------------------------------------------- -->
+##
 
 ### Install MySQL on Ubuntu 20.04
 // https://www.digitalocean.com/community/tutorials/how-to-create-a-new-user-and-grant-permissions-in-mysql
@@ -181,14 +191,16 @@ Creating a Dedicated MySQL User and Granting Privileges
 
     --------------------------------------------------------------
 
-<!-- -------------------------------------------------------------------- -->
+<!-- --------------------------------------------------------------- -->
+##
 
 ### Installing Brave Browser
 
 https://brave.com/linux/
 
 
-<!-- -------------------------------------------------------------------- -->
+<!-- --------------------------------------------------------------- -->
+##
 
 ### Installing Daedalus (Mainnet) on Linux
 
@@ -207,7 +219,8 @@ and give executable permissions to the installer:
     
 After doing that try running the installer again.
 
-<!-- -------------------------------------------------------------------- -->
+<!-- --------------------------------------------------------------- -->
+##
 
 ### Install Apache2
 https://ubuntu.com/tutorials/install-and-configure-apache#2-installing-apache
@@ -270,7 +283,8 @@ Testing PHP Processing
 
     visit: http://your_server_ip/info.php
 
-<!-- -------------------------------------------------------------------- -->
+<!-- --------------------------------------------------------------- -->
+##
 
 ### Configure PHP 8 for Apache
 https://docs.presscustomizr.com/article/171-fixing-maximum-upload-and-php-memory-limit-issues
@@ -290,7 +304,11 @@ https://docs.presscustomizr.com/article/171-fixing-maximum-upload-and-php-memory
     $ sudo service apache2 restart
 
 
-<!-- -------------------------------------------------------------------- -->
+<!-- --------------------------------------------------------------- -->
+##
+
+
+
 
 
 ### Setup email Geary
@@ -300,9 +318,12 @@ For yahoo:
     https://help.yahoo.com/kb/generate-third-party-passwords-sln15241.html
 
 
-<!-- -------------------------------------------------------------------- -->
+<!-- --------------------------------------------------------------- -->
+##
 
-### Install phpmyadmin
+### Install phpmyadmin Manualy
+
+https://www.digitalocean.com/community/questions/how-to-install-manually-phpmyadmin-on-ubuntu
 
 Step 1 - Install the additional PHP modules:
 
@@ -371,11 +392,28 @@ Step 4 - Securing your phpMyAdmin Instance
 
     $ sudo htpasswd -c /etc/apache2/.htpasswd username
 
-<!-- -------------------------------------------------------------------- -->
+<!-- --------------------------------------------------------------- -->
+##
 
 
+### Install Atom
 
+    https://linuxize.com/post/how-to-install-atom-text-editor-on-ubuntu-20-04/
 
+    $ sudo snap install atom --classic
+
+<!-- --------------------------------------------------------------- -->
+##
+
+### Installing FileZilla from command line
+
+    https://www.computernetworkingnotes.com/linux-tutorials/how-to-install-filezilla-ftp-client-in-ubuntu.html
+
+    $ sudo apt update
+    $ sudo apt install filezilla
+
+<!-- --------------------------------------------------------------- -->
+##
     
 
 
