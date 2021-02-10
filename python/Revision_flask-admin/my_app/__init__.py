@@ -27,6 +27,21 @@ app = create_app()
 CORS(app)
 db = SQLAlchemy(app)
 
+# ______________________________________________________________________
+# Modules Imports
+
+from my_app.modules.database import db, Users, Comments
+
+# ______________________________________________________________________
+# Flask-admin setup
+
+admin = Admin(app=app, template_mode='bootstrap4')
+
+admin.add_view(ModelView(Users, db.session))
+
+admin.add_view(ModelView(Comments, db.session))
+
+
 
 
 # ______________________________________________________________________
