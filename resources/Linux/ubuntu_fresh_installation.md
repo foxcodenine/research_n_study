@@ -413,7 +413,13 @@ Step 4 - Securing your phpMyAdmin Instance
     $ sudo apt install filezilla
 
 <!-- --------------------------------------------------------------- -->
-##
+### How to view WebP images in Ubuntu and other Linux
+
+    $ sudo apt-get install gthumb
+
+Once installed, you can simply rightly click on the WebP image and select gThumb to open it
+
+Make gThumb the default application for WebP images in Ubuntu to display thumbnail.
     
 
 
