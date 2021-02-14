@@ -1,4 +1,4 @@
-from my_app import app, db
+from my_app import app, db, ModelView, bcrypt
 
 # ______________________________________________________________________
 
@@ -24,6 +24,36 @@ class Users(db.Model):
         self.password = password + password
         self.age = age
         self.birthday = birthday
+        
+
+# _____________________________________
+
+class UserView(ModelView):
+    # https://flask-admin.readthedocs.io/en/latest/api/mod_model/
+
+    column_exclude_list = ('password')
+    # column_list = ('id', 'email', 'age', 'birthday')
+    column_display_pk = True
+    column_labels = dict(id='User ID', birthday='Date of Birth')
+    can_delete = True
+    can_edit = True 
+    can_create = True
+    can_export = True
+    column_searchable_list = ('id','email')
+    create_modal = True
+
+
+    def on_model_change(self, form, model, is_created):
+        # Perform some actions before a model is created or updated and
+        # committed to the database.
+        model.password = bcrypt.generate_password_hash(model.password).decode('utf-8')
+
+    def after_model_change(self, form, model, is_created):
+        # Perform some actions after a model was created or updated and
+        # committed to the database.
+        pass
+
+# _____________________________________
 
 class Comments(db.Model):
     __tablename__ = 'flask_admin_comments'
