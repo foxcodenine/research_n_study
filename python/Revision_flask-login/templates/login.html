@@ -18,7 +18,7 @@
         <button type="submit" value="login">Login!</button>
 
         {% with messages = get_flashed_messages() %}
-        {% if messages%}
+        {% if messages %}
 
             <ul>
             {% for message in messages %}
@@ -26,7 +26,7 @@
             {% endfor %}
              </ul>
 
-        {% endif%}
+        {% endif %}
         {% endwith %}
 
     </form>

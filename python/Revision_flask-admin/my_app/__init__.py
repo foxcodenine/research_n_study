@@ -13,7 +13,10 @@ from flask_bcrypt import Bcrypt
 
 
 
+import os
+import flask_admin
 
+print('\n>>>>>>>> >>',os.path.dirname(flask_admin.__file__))
 # ______________________________________________________________________
 # App Setup
 

@@ -21,7 +21,6 @@ from pathlib import Path
 env_path = Path('.') / '.env'
 load_dotenv(dotenv_path=env_path)
 
-
 # ______________________________________________________________________
 
 app = Flask(__name__)
@@ -33,9 +32,6 @@ app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_CONNECTION')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 # app.config['REMEMBER_COOKIE_DURATION'] = timedelta(seconds=20) #<- not working in chrome
-
-
-
 
 db = SQLAlchemy(app)
 serializer = URLSafeTimedSerializer(app.secret_key)
@@ -58,7 +54,6 @@ def load_user(session_token):
             db.session.commit()
         return None
     return user
-
 
 # ______________________________________________________________________
 # Database Class
