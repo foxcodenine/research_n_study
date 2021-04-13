@@ -138,7 +138,7 @@ _______________________________
             mysql> SELECT User,Host FROM mysql.user;
 
         b. To create a new user example: admin on localhost with 	password ****:
-            mysql> CREATE USER admin@localhost IDENTIFIED BY ‘****’ ;
+            mysql> CREATE USER admin@localhost IDENTIFIED BY '****' ;
             (password used in project Admin)
 
         c. To delete a user:
