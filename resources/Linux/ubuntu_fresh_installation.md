@@ -422,6 +422,14 @@ Once installed, you can simply rightly click on the WebP image and select gThumb
 Make gThumb the default application for WebP images in Ubuntu to display thumbnail.
     
 
+<!-- --------------------------------------------------------------- -->
+
+### Install Docker
+
+    $ sudo apt-get update
+    $ sudo apt install docker.io
+
+
 
 
 
