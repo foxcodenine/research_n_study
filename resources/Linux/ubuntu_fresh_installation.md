@@ -429,9 +429,13 @@ Make gThumb the default application for WebP images in Ubuntu to display thumbna
     $ sudo apt-get update
     $ sudo apt install docker.io
 
+    $ docker --version
+
     $ sudo systemctl status docker
     $ sudo systemctl enable --now docker
     $ sudo systemctl disable --now docker
+
+    <!-- $ sudo docker run hello-world -->
 
 
 
