@@ -27,15 +27,15 @@
 
     to boot from a specifed drive (ex: bood image drive)
 
-        grib> part_gpt
+        grib> insmod part_gpt
 
-        grib> fat
+        grib> insmod fat
 
-        grib> search_fs_uuid
+        grib> insmod search_fs_uuid
 
-        grib> chain
+        grib> insmod chain
 
-        grib> --fs-uuid --set=root 3A28-CE43
+        grib> search --fs-uuid --set=root 3A28-CE43
 
             change 3A28-CE43 to your uuid
 
@@ -61,15 +61,15 @@
     in Boot sequence insert the above sequence we did at grub menu with 
     the correct uuid:
 
-        grib> part_gpt
+        grib> insmod part_gpt
 
-        grib> fat
+        grib> insmod fat
 
-        grib> search_fs_uuid
+        grib> insmod search_fs_uuid
 
-        grib> chain
+        grib> insmod chain
 
-        grib> --fs-uuid --set=root 3A28-CE43
+        grib> search --fs-uuid --set=root 3A28-CE43
 
             change 3A28-CE43 to your uuid
 
