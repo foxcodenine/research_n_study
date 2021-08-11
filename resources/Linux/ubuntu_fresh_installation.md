@@ -437,7 +437,22 @@ Make gThumb the default application for WebP images in Ubuntu to display thumbna
 
     <!-- $ sudo docker run hello-world -->
 
+<!-- --------------------------------------------------------------- -->
+
+### Reinstall Grub
+    $ sudo grub-install /dev/sda
 
 
 
+<!-- --------------------------------------------------------------- -->
+
+### VSCode Extention List
+
+    $ code --list-extensions
+
+<!-- --------------------------------------------------------------- -->
+
+### Digital Ocean connect ssh
+
+    $ ssh -i /home/foxcodenine/digitalocean/digitalOcean.txt root@167.172.163.199
 
