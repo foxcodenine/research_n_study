@@ -70,8 +70,3 @@ linux    /vmlinuz-5.11.12-300.fc34.x86_64 root=UUID=bbf2d932-55c7-4a5b-9f84-79a7
 initrd    /initramfs-5.11.12-300.fc34.x86_64.img
 
 ________________________________________________________________________________
-
-
-Installing VokoscreenNG on Linux fedora:
-
-    $ sudo dnf install vokoscreenNG
