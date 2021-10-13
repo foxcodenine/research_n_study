@@ -28,6 +28,17 @@ Else enter:
 The first inet should be the ip-address that (is not 127.0.0.1)
 
 ________________________________________________________________________________
+### Turn off bell / beep terminal sound
+
+	$ sudo nano /etc/inputrc
+
+		set bell-style none
+
+	https://linuxconfig.org/turn-off-beep-bell-on-linux-terminal
+
+
+
+________________________________________________________________________________
 
 ### Connect remotely with ssh
 (1) ----- Check you have ssh on both machines by:
