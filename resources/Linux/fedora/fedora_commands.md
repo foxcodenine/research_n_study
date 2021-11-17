@@ -100,6 +100,9 @@ You will be ask for the server password.
 ________________________________________________________________________________
 
 ### Create a new user
+	
+	Remember the /etc/skel directory contains files and directories that are automatically 
+	copied over to a new user’s when it is created from useradd command.
 
 		$ useradd username
 	
