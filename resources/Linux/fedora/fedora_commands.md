@@ -98,3 +98,61 @@ You will be ask for the server password.
 
 
 ________________________________________________________________________________
+
+### Create a new user
+
+		$ useradd username
+	
+	or
+	
+		$ useradd username -d /home/username -c 'firstname lastname'
+	
+	# -d /text/text  &  -c 'text' are optional. 
+	
+	# -d /home/username; is specifying the user home directory, 
+	     you can set a non-default Home Directory
+	     
+	# -c 'firstname lastname' Add any text string. Used as field for the user's full name.
+	
+	
+	Set password:
+		$ passwd username
+		
+	Copy ssh settings from root to user
+	
+		$ cd /home/username
+		$ cp -r /root/.ssh
+		$ chmod -R 777 .ssh/		# <- do not know if need it.
+ 		
+________________________________________________________________________________
+
+### Add sudo to user
+
+ ---- method (1)
+		$ usermod -G goupname username
+	or
+		$ usermod -G group1,group2,group3 username
+
+ ---- method (2)
+  		
+		$ vi /etc/group
+	And add user to wheel:x:10:	example:
+		wheel:x:10:rocky
+ 		
+ ---- method (3)
+		$ vi /etc/sudoers
+	And add in last line username ALL=(ALL) ALL; example:
+		rocky ALL=(ALL) ALL
+________________________________________________________________________________
+
+
+
+
+
+
+
+
+
+
+ 		
+ 		
