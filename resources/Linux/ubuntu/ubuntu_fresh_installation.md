@@ -442,7 +442,11 @@ Make gThumb the default application for WebP images in Ubuntu to display thumbna
 ### Reinstall Grub
     $ sudo grub-install /dev/sda
 
+<!-- --------------------------------------------------------------- -->
+### Grub Customizer not showing Fedora
+    set "GRUB_ENABLE_BLSCFG=false" in /etc/default/grub
 
+    // also check Fedora notes
 
 <!-- --------------------------------------------------------------- -->
 
