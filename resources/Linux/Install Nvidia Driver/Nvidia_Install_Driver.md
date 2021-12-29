@@ -2,7 +2,8 @@
 
     Solved_ Thunderbolt Port not recognized in Linux Ubuntu Inspiron 16 7610 - Dell Community.pdf
 
-### I have run this command and found that my graphic card was unclamed:
+### I have run this command and found that my graphic card was unclaimed:
+### ('UNCLAIMED' means that no driver has been loaded for that card. )
 
     sudo lshw -c display
 
