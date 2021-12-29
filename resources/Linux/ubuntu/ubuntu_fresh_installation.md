@@ -286,6 +286,27 @@ Testing PHP Processing
 <!-- --------------------------------------------------------------- -->
 ##
 
+install mysql php extention:
+
+        $ apt-get install php-mysql
+            or 
+        $ apt-get install php8.0-mysql
+
+
+enable PDO extention in php.ini file:
+
+        extension=pdo_mysql.so
+
+
+restart apache or fpm:
+
+        $ sudo service apache2 restart
+            or
+        $ sudo systemctl restart php8.0-fpm.service
+
+<!-- --------------------------------------------------------------- -->
+##
+
 ### Configure PHP 8 for Apache
 https://docs.presscustomizr.com/article/171-fixing-maximum-upload-and-php-memory-limit-issues
 
