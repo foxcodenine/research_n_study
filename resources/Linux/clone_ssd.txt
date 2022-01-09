@@ -1,0 +1,30 @@
+Finding current blocksize:
+
+	$ sudo blockdev --getbsz /dev/sda1
+or
+	$ stat <<Filename>>
+
+	Ex: $ stat .
+
+or 	
+	$ sudo dumpe2fs /dev/sda5 | grep "Block size"
+	
+Get the name of partitions:
+	
+	$ lsblk
+
+Cloning disk (bs is the block size):
+
+	$ dd if=/dev/sda of=/dev/sdx bs=4096
+
+Sites:
+
+https://www.dell.com/support/kbdoc/en-us/000146908/why-4k-drive-recommended-for-os-installation
+
+https://www.baeldung.com/linux/dd-optimal-blocksize
+
+https://newbedev.com/how-would-i-speed-up-a-full-disk-dd
+
+https://www.cyberciti.biz/faq/find-hard-disk-hardware-specs-on-linux/
+
+
