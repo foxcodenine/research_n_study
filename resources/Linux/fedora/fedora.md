@@ -43,8 +43,15 @@ You can check if it's value by:
 (8) Arrange the order of installation and Close -> Update & Quit.
 
 (9) Last step is to Re-install Grub to be set as default from Ubuntu.
-
+    1st find you hard disk name using  $ lsblk and checking the /dev diectory
+    The result should be (might be) like sd? or nvme???
+    Then reinstall grub by:
+      
+      $ sudo grub-install /dev/your_hard_disk_name
+      Ex:    
       $ sudo grub-install /dev/sda
+      or
+      $ sudo grub-install /dev/nvme0n1
 
 (10) Next time you restart, grub should display all installation
      as set on GRUB Customizer on Ubuntu, including Fedora option.
