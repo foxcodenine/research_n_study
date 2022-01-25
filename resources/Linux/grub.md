@@ -17,7 +17,8 @@
     
     to check / list file and folder on a specific drive:
 
-        grub> root(hd0,gpt1)tab
+        grub> root (hd0,gpt1)<tab>
+              (<tab> is press btn tab)
 
     to get the drive uuid:
 
@@ -37,7 +38,7 @@
 
         grib> search --fs-uuid --set=root 3A28-CE43
 
-            change 3A28-CE43 to your uuid
+            (change 3A28-CE43 to your uuid)
 
         grib> chainloader /efi/boot/bootx64.efi
 

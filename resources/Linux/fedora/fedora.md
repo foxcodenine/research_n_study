@@ -43,8 +43,15 @@ You can check if it's value by:
 (8) Arrange the order of installation and Close -> Update & Quit.
 
 (9) Last step is to Re-install Grub to be set as default from Ubuntu.
-
+    1st find you hard disk name using  $ lsblk and checking the /dev diectory
+    The result should be (might be) like sd? or nvme???
+    Then reinstall grub by:
+      
+      $ sudo grub-install /dev/your_hard_disk_name
+      Ex:    
       $ sudo grub-install /dev/sda
+      or
+      $ sudo grub-install /dev/nvme0n1
 
 (10) Next time you restart, grub should display all installation
      as set on GRUB Customizer on Ubuntu, including Fedora option.
@@ -52,21 +59,21 @@ You can check if it's value by:
 ________________________________________________________________________________
 ### Fedora Config Ex:
 
-Name: Fedora (5.11.12-300.fc34.x86_64) 34 (Workstation Edition)
-Type: Other
+      Name: Fedora (5.11.12-300.fc34.x86_64) 34 (Workstation Edition)
+      Type: Other
 
-load_video
-set gfxpayload=keep
-insmod gzio
-insmod part_gpt
-insmod ext2
-set root='hd0,gpt6'
-if [ x$feature_platform_search_hint = xy ]; then
-  search --no-floppy --fs-uuid --set=root --hint-bios=hd0,gpt6 --hint-efi=hd0,gpt6 --hint-baremetal=ahci0,gpt6  b19145f7-8384-482d-a36c-96df682b5a70
-else
-  search --no-floppy --fs-uuid --set=root b19145f7-8384-482d-a36c-96df682b5a70
-fi
-linux    /vmlinuz-5.11.12-300.fc34.x86_64 root=UUID=bbf2d932-55c7-4a5b-9f84-79a701b7feb9 ro rootflags=subvol=root rhgb quiet
-initrd    /initramfs-5.11.12-300.fc34.x86_64.img
+      load_video
+      set gfxpayload=keep
+      insmod gzio
+      insmod part_gpt
+      insmod ext2
+      set root='hd0,gpt6'
+      if [ x$feature_platform_search_hint = xy ]; then
+        search --no-floppy --fs-uuid --set=root --hint-bios=hd0,gpt6 --hint-efi=hd0,gpt6 --hint-baremetal=ahci0,gpt6  b19145f7-8384-482d-a36c-96df682b5a70
+      else
+        search --no-floppy --fs-uuid --set=root b19145f7-8384-482d-a36c-96df682b5a70
+      fi
+      linux    /vmlinuz-5.11.12-300.fc34.x86_64 root=UUID=bbf2d932-55c7-4a5b-9f84-79a701b7feb9 ro rootflags=subvol=root rhgb quiet
+      initrd    /initramfs-5.11.12-300.fc34.x86_64.img
 
 ________________________________________________________________________________
