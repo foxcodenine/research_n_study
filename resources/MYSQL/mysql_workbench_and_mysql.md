@@ -30,4 +30,32 @@
 ### You want to store the database password(s) in the Gnome Passwords & Keys facility.
 ### You need to enter a command to allow this package to access the service. The command is:
 
-    $ sudo snap connect mysql-workbench-community:password-manager-service :password-manager-service
+```bash
+    #$ sudo snap connect mysql-workbench-community:password-manager-service :password-manager-service
+    
+    $ sudo snap connect mysql-workbench-community:password-manager-service
+    $ sudo snap connect mysql-workbench-community:ssh-keys
+    $ sudo snap connect mysql-workbench-community:cups-control
+    $ sudo snap connect mysql-workbench-community:removable-media
+```
+
+### set remote connection
+
+    connection method   ->  Standard TCP/IP over SSH
+    SSH Hostname        ->  ec2-**-***-**-***.XX-central-*.compute.amazonaws.com
+    SSH Key File        ->  /home /path_to/key_file.pem
+    MySQL Hostname      -> 127.0.0.1
+    Mysql Server Port   -> 3306
+    Username            -> mysql_username
+
+    Press Test Connection / You might need to logout or restart before connecting
+
+### Using nslookup to get SSH Hostname
+
+    $ nslookup domainname
+    > get ip_address
+
+    $ nslookup ip_address
+    > get ssh_hostname
+
+
