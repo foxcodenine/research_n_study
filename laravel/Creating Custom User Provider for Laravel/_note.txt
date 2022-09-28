@@ -1,0 +1,20 @@
+I have followed the this tutorial.
+
+However:
+
+	1. I have save my CustomProvider as a service App\Services\Auth\IotUserApiService.php
+
+	2. It implements  App\Contracts\Auth\IotUserApiCountract.php
+
+	3. IotUserApiCountract extends Illuminate\Contracts\Auth\UserProvider; in return.
+
+
+And I didn't implement the code in:
+
+	LoginController.php
+
+	and
+
+	EnsureFrontendRequestHasUser.php
+
+Site: https://abdullahcanakci.org/en/posts/laravel-custom-user-provider/
