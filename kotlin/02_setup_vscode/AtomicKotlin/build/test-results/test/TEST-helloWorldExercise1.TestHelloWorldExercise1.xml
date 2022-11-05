@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="helloWorldExercise1.TestHelloWorldExercise1" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-11-05T15:05:26" hostname="Inspiron-16-7610" time="0.007">
+  <properties/>
+  <testcase name="test" classname="helloWorldExercise1.TestHelloWorldExercise1" time="0.007"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
