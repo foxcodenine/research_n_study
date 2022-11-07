@@ -8,12 +8,18 @@ use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Support\Facades\Http;
 
 
+
 /**
  * Class IotUserApiService.
  */
 class IotUserApiService implements IotUserApiCountract
 {
+    /**
+     * retrieveById will be called on every request where the session 
+     * cookie has information about user id
+     */
     public function retrieveById($identifier){
+        
         $currentUser = unserialize(session('currentUser'));
 
         if ($identifier == $currentUser->id) {
@@ -26,9 +32,12 @@ class IotUserApiService implements IotUserApiCountract
     }
     // _________________________________________________________________
 
-    public function retrieveByCredentials(array $credentials) {
-       
-
+    /**
+     * retrieveByCredentials will be called on login, it calls the custom 
+     * method 'retrieveIotUserFromApi' that return a the User if authenticated
+     */
+    public function retrieveByCredentials(array $credentials) {       
+        
         return $this->retrieveIotUserFromApi(
             $credentials['email'],  $credentials['password']
         );
@@ -36,9 +45,12 @@ class IotUserApiService implements IotUserApiCountract
 
     // _________________________________________________________________
 
-  
-    public function validateCredentials(Authenticatable $user, array $credentials) {
 
+    /**
+     * If Authentcated user provided it is save in session as currentUser
+     */
+    public function validateCredentials(Authenticatable $user, array $credentials) {
+        
         if(is_null($user)) { return false; }
 
         session(['currentUser' => serialize($user)]);
@@ -59,7 +71,10 @@ class IotUserApiService implements IotUserApiCountract
 
     // _________________________________________________________________
 
-
+    /**
+     * My custom function, fetch user credentials from api, 
+     * and create a user instance with fetched data
+     */
     public function retrieveIotUserFromApi($email, $password) {
         
         $url = env('IOT_APP_BASE_URL') . '/api' . '/sso/login';

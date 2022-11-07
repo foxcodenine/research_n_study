@@ -17,4 +17,8 @@ And I didn't implement the code in:
 
 	EnsureFrontendRequestHasUser.php
 
+Remember to do:
+
+	$ composer dump-autoload
+
 Site: https://abdullahcanakci.org/en/posts/laravel-custom-user-provider/
