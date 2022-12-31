@@ -2,7 +2,7 @@
 
     $ rsync -a --delete --exclude={'sub2','dir3'} a/* b
 
-    $ rsync -arv --delete --exclude={'node_modules','vendor'} ~/Projects/IoT/track-iot/ ~/git/repo/iot_solutions/track-iot
+    $ rsync -arv --delete --exclude={'node_modules','vendor'} ~/Projects/iot/track-iot/ ~/git/repo/iot_solutions/track-iot
 
 ### gpg
 
