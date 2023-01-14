@@ -4,6 +4,8 @@
 
     $ rsync -arv --delete --exclude={'node_modules','vendor'} ~/Projects/iot/track-iot/ ~/git/repo/iot_solutions/track-iot
 
+    $ rsync -arv --delete --exclude={'node_modules','vendor'} ~/test_rsync ubuntu@ec2-3-73-39-96.eu-central-1.compute.amazonaws.com:~/test_rsync
+
 ### gpg
 
     $ gpg -c .env
@@ -28,3 +30,43 @@ To clear the cache simply run
 ### rename
 
     $ find *   -name aaa.a  -exec   rename 's/aaa.a/abc/' {} \;
+
+### firewall
+
+Check Firewall Status
+
+    $ sudo ufw status
+    $ sudo ufw status verbose
+
+Display firewall rule numbers:
+
+    $ sudo ufw status numbered
+
+Delete the firewall rule number
+
+    $ sudo ufw delete 4
+
+
+### nping
+
+    $ sudo nping --tcp -p {port} {host}
+
+    $ sudo nping --tcp -p 443 www.cyberciti.biz
+
+    $ sudo nping --tcp -p 6767 141.8.23.81
+
+
+### ip address
+
+for private:
+
+    $ ip route get 1.2.3.4 | awk '{print $7}'
+    $ hostname -I | awk '{print $1}'
+
+for public:
+
+    $ dig +short myip.opendns.com @resolver1.opendns.com
+
+    $ curl ifconfig.co
+    $ curl ifconfig.me
+    $ curl icanhazip.com
