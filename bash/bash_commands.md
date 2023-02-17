@@ -6,6 +6,20 @@
 
     $ rsync -arv --delete --exclude={'node_modules','vendor'} ~/test_rsync ubuntu@ec2-3-73-39-96.eu-central-1.compute.amazonaws.com:~/test_rsync
 
+    rsync -r -t -p -o -g -v --progress --delete --exclude={'node_modules','vendor','011_Fictional_University','.Trash-1000','debugbar'}  --ignore-existing -s /home/foxcodenine/foxfiles /media/foxcodenine/19AD-6262/foxfiles_backup
+    
+    sudo rsync -r -t -p -o -g -v --progress --exclude={'node_modules','vendor','011_Fictional_University','.Trash-1000','debugbar'}  --ignore-existing -s /home/foxcodenine/foxfiles /media/foxcodenine/19AD-6262/foxfiles_backup
+    
+     --recursive, -r          recurse into directories
+     --times, -t              preserve modification times
+     --delete                 delete extraneous files from dest dirs
+     --perms, -p              preserve permissions
+     --owner, -o              preserve owner (super-user only)
+     --group, -g              preserve group
+     --verbose, -v            increase verbosity
+
+
+
 ### gpg
 
     $ gpg -c .env
