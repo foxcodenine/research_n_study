@@ -1,0 +1,17 @@
+GNOME Shell system monitor extension
+https://github.com/paradoxxxzero/gnome-shell-system-monitor-applet/blob/master/README.md
+
+
+Vitals is a GNOME Shell extension for displaying your computer's temperature, voltage, fan speed, memory, etc
+https://github.com/corecoding/Vitals
+
+
+Grub Customizer missing from Ubuntu 22.04
+https://itsfoss.com/install-grub-customizer-ubuntu/
+https://askubuntu.com/questions/1404445/grub-customizer-missing-from-ubuntu-22-04
+
+
+
+
+
+

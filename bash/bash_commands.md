@@ -84,3 +84,22 @@ for public:
     $ curl ifconfig.co
     $ curl ifconfig.me
     $ curl icanhazip.com
+
+
+
+
+### PostgreSQL via SSH Tunnel
+
+Fowarding a port:
+
+    $ ssh -L 1111:localhost:5432 user@remote.example.com
+
+
+If this is expected to be a long-running tunnel, I would recommend using autossh
+To connect using the psql client on the host where you are running the ssh client, use something like this:
+
+    $ psql -h localhost -p 1111 -U your-db-username database-name
+
+Alternately, you can add a line line the following to a file called .pgpass in your home directory on the client where you're running ps
+
+    $ localhost:1111:database-name:your-db-user:your-db-password

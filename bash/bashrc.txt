@@ -1,0 +1,49 @@
+#_______________________________________________________________________________
+
+
+export EDITOR='vi'
+export VISUAL='vi'
+
+HISTCONTROL=ignorespace:erasedups;
+
+alias sudo='sudo ';
+alias rm='rm -iv';
+alias rmdir='rmdir -v';
+alias mkdir='mkdir -pv';
+alias cp='cp -va';
+
+PS1='\[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\[\033[01;30m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+
+# export PATH=$PATH:$HOME/bin;
+
+if [ "$TERM_PROGRAM" = "vscode" ]; then
+  PS1=' \[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\W\[\033[00m\]\$ '
+fi
+
+alias bkiot-trak="rsync -arv --delete --exclude={'node_modules','vendor'} ~/Projects/iot/track-iot/ ~/git/repo/iot_solutions/track-iot";
+
+alias vb_ubuntu='ssh -p 2521 ubuntu@127.0.0.1';
+alias vb_rocky='ssh -p 2522 rocky@127.0.0.1';
+alias vb_fedora='ssh -p 2525 fedora@127.0.0.1';
+alias vb_lubuntu='ssh -p 2526 lubuntu@127.0.0.1';
+#alias vb_centos='ssh -oHostKeyAlgorithms=+ssh-dss -p 2524 root@127.0.0.1';
+
+#ialias ssh_digital_ocean='sudo sh -i /home/foxcodenine/digitalocean/digitalOcean.txt root@167.172.163.199';
+alias ssh_aws='sudo ssh -i "/home/foxcodenine/AWS/fox-rs2-keys.pem" ubuntu@ec2-3-75-220-135.eu-central-1.compute.amazonaws.com'
+alias ssh_aws_docker='sudo ssh -i "/home/foxcodenine/AWS/fox-rs2-keys.pem" ubuntu@ec2-3-120-245-56.eu-central-1.compute.amazonaws.com'
+alias ssh_ovh_root='ssh -i "~/.ssh/ssh_iot/id_ecdsa" root@51.89.4.109'
+alias ssh_dazzling_root='ssh -i "~/.ssh/ssh_iot/id_ecdsa" root@51.89.4.208'
+
+alias authy='/snap/authy/current/authy'
+
+#alias authy='/snap/authy/10/authy'
+alias atom='flatpak run io.atom.Atom'
+#alias docker='sudo docker'
+
+alias kubectl="minikube kubectl --"
+alias studio='/opt/android-studio/bin/studio.sh'
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+
