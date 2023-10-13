@@ -2,6 +2,14 @@
 
     $ rsync -a --delete --exclude={'sub2','dir3'} a/* b
 
+    # -a: This option is a short form of --archive and is used to preserve symbolic links, permissions, timestamps, ownerships, and groups, and to recursively copy directories. 
+
+    # --delete: This option tells rsync to delete extraneous files from the receiving side (in directory b) that do not exist on the sending side (in directory a). 
+
+    # --exclude={'sub2','dir3'}: This option excludes the specified directories (sub2 and dir3) from being synchronized.
+
+    # a/*: This specifies the source directory from which files are to be copied. The asterisk * is a wildcard character that represents any character or group of characters.
+
     $ rsync -arv --delete --exclude={'node_modules','vendor'} ~/Projects/iot/track-iot/ ~/git/repo/iot_solutions/track-iot
 
     $ rsync -arv --delete --exclude={'node_modules','vendor'} ~/test_rsync ubuntu@ec2-3-73-39-96.eu-central-1.compute.amazonaws.com:~/test_rsync
@@ -10,13 +18,22 @@
     
     sudo rsync -r -t -p -o -g -v --progress --exclude={'node_modules','vendor','011_Fictional_University','.Trash-1000','debugbar'}  --ignore-existing -s /home/foxcodenine/foxfiles /media/foxcodenine/19AD-6262/foxfiles_backup
     
-     --recursive, -r          recurse into directories
+     --recursive, -r          enable the recursive copying
      --times, -t              preserve modification times
      --delete                 delete extraneous files from dest dirs
      --perms, -p              preserve permissions
      --owner, -o              preserve owner (super-user only)
      --group, -g              preserve group
      --verbose, -v            increase verbosity
+
+     -s                       this option is used to show the sizes of the files during the transfer
+     -h                       this option enables human-readable file sizes, showing them in a more understandable format.
+
+     --ignore-existing        this option tells rsync to skip files that already exist in the destination, avoiding overwriting any existing files.
+
+    --bwlimit=5000K           this option limits the bandwidth used by rsync to transfer the file. In this case, it limits the transfer rate to 5000 kilobytes per second (or 5 megabytes per second), which can be helpful in controlling the impact on network performance during the transfer.
+
+    rsync -ah --progress --bwlimit=5000K /home/foxcodenine/Lubuntu-VB/11.mp4 /media/foxcodenine/corsair/
 
 
 

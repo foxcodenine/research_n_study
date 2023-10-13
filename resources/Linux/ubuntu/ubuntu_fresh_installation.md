@@ -2,7 +2,7 @@
     download vscode .deb file from vscode site
     cd to folder
 
-    $ sudo hapt update
+    $ sudo apt update
     $ sudo apt install ./code*.deb
 
     if you get the following when $ sudo apt-get update
@@ -10,7 +10,7 @@
     N: Skipping acquire of configured .... doesn't support architecture 'arm64'
     N: Skipping acquire of configured .... 'armhf'
 
-    edit: /etc/apt/sources.list.d/vscode.list. 
+    edit: /etc/apt/sources.list.d/vscode.list.
     Remove any unwanted architectures from between the brackets and it should end up like this:
 
     deb [arch=amd64] http://packages.microsoft.com/repos/vscode stable main
@@ -32,7 +32,7 @@
 <!-- --------------------------------------------------------------- -->
 ##
 ### Install Grub Customizer in Ubuntu 20.04 LTS
-    
+
     $ sudo apt update
     $ sudo apt install grub-customizer
 
@@ -60,7 +60,7 @@ And restart pc
 
 <!-- --------------------------------------------------------------- -->
 ##
-    
+
 
 ### install git
 
@@ -82,12 +82,12 @@ And restart pc
     $ ls -al
     $ code id_rsa.pub
 
-    copy content and go to your git account. Go to settings. 
+    copy content and go to your git account. Go to settings.
     Select SSH and GPG keys, currently at the side menu
 
     New SSH key
 
-    Enter a Title and in the Key past the id_rsa.pub content 
+    Enter a Title and in the Key past the id_rsa.pub content
 
     Ass SSH key
 
@@ -113,7 +113,7 @@ And restart pc
 
 Will show you an error:
 
-    $ update-alternatives: error: no alternatives for python3 
+    $ update-alternatives: error: no alternatives for python3
 
 You need to update your update-alternatives , then you will be able to set your default python version, Assign the different version with different numbers .
 
@@ -124,7 +124,7 @@ Then run :
 
     $ sudo update-alternatives --config python
 
-    and select the assigned number to set it as default 
+    and select the assigned number to set it as default
 
 then update new config for python3
 
@@ -164,13 +164,13 @@ Configuring MySQL
 Creating a Dedicated MySQL User and Granting Privileges  
 
     $ sudo mysql -u root   
-    
+
     OR  
 
-    $ sudo mysql -u root -p 
+    $ sudo mysql -u root -p
     *******
 
-     
+
 
     mysql> CREATE USER username@localhost IDENTIFIED BY 'password';
     mysql> GRANT ALL PRIVILEGES ON * . * TO username@localhost;
@@ -185,8 +185,8 @@ Creating a Dedicated MySQL User and Granting Privileges
 
     mysql> Show variables like 'validate_password%';
 
-    mysql> SET GLOBAL validate_password_length = 6; 
-    mysql> SET GLOBAL validate_password_number_count = 0; 
+    mysql> SET GLOBAL validate_password_length = 6;
+    mysql> SET GLOBAL validate_password_number_count = 0;
     mysql> SET GLOBAL validate_password.policy = LOW;
 
     --------------------------------------------------------------
@@ -209,14 +209,14 @@ https://brave.com/linux/
     https://daedaluswallet.io/
 
 2. Open a terminal, navigate to the folder where you saved the installer
-and give executable permissions to the installer: 
+and give executable permissions to the installer:
 
     $ chmod +x ./daedalus-2.2.0-mainnet-14276.bin.
 
-3. Run the installer (for example): 
+3. Run the installer (for example):
 
     $ ./daedalus-2.2.0-mainnet-14276.bin. ...
-    
+
 After doing that try running the installer again.
 
 <!-- --------------------------------------------------------------- -->
@@ -224,7 +224,7 @@ After doing that try running the installer again.
 
 ### Install Apache2
 https://ubuntu.com/tutorials/install-and-configure-apache#2-installing-apache
- 
+
     $ sudo apt update
     $ sudo apt install apache2
 
@@ -235,7 +235,7 @@ Enabling PHP Repository
 
     $ sudo apt install software-properties-common
     $ sudo add-apt-repository ppa:ondrej/php
-    
+
 
 Installing PHP 8.0 with Apache
 
@@ -258,7 +258,7 @@ Configure Apache with PHP-FPM
 
 Installing PHP extensions
 
-    PHP extensions are compiled libraries that extend the core functionality of PHP. 
+    PHP extensions are compiled libraries that extend the core functionality of PHP.
     Extensions are available as packages and can be easily installed with apt :
 
     sudo apt install php8.0-[extname]
@@ -271,8 +271,8 @@ Installing PHP extensions
 
 Testing PHP Processing
 
-    To test whether the web server is configured properly for PHP processing, 
-    create a new file named info.php inside the /var/www/html directory with 
+    To test whether the web server is configured properly for PHP processing,
+    create a new file named info.php inside the /var/www/html directory with
     the following code:
 
         /var/www/html/info.php
@@ -289,7 +289,7 @@ Testing PHP Processing
 install mysql php extention:
 
         $ apt-get install php-mysql
-            or 
+            or
         $ apt-get install php8.0-mysql
 
 
@@ -314,11 +314,11 @@ https://docs.presscustomizr.com/article/171-fixing-maximum-upload-and-php-memory
 
     Hit F6 for search inside the editor and update the following values for better performance.
 
-    upload_max_filesize = 32M 
-    post_max_size = 48M 
-    memory_limit = 256M 
-    max_execution_time = 600 
-    max_input_vars = 3000 
+    upload_max_filesize = 32M
+    post_max_size = 48M
+    memory_limit = 256M
+    max_execution_time = 600
+    max_input_vars = 3000
     max_input_time = 1000
 
 
@@ -385,7 +385,7 @@ Step 3.1 - Configure phpMyadmin
 
     update this line, fill between '' with a secret key/string:
 
-    $cfg['blowfish_secret'] = ''; /* YOU MUST FILL IN THIS FOR COOKIE AUTH! */ 
+    $cfg['blowfish_secret'] = ''; /* YOU MUST FILL IN THIS FOR COOKIE AUTH! */
 
 
 Step 3.2 - Create a mysql user with password and grant privilages
@@ -441,7 +441,7 @@ Step 4 - Securing your phpMyAdmin Instance
 Once installed, you can simply rightly click on the WebP image and select gThumb to open it
 
 Make gThumb the default application for WebP images in Ubuntu to display thumbnail.
-    
+
 
 <!-- --------------------------------------------------------------- -->
 
@@ -480,4 +480,3 @@ Make gThumb the default application for WebP images in Ubuntu to display thumbna
 ### Digital Ocean connect ssh
 
     $ ssh -i /home/foxcodenine/digitalocean/digitalOcean.txt root@167.172.163.199
-
