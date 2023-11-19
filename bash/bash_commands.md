@@ -33,9 +33,13 @@
 
     --bwlimit=5000K           this option limits the bandwidth used by rsync to transfer the file. In this case, it limits the transfer rate to 5000 kilobytes per second (or 5 megabytes per second), which can be helpful in controlling the impact on network performance during the transfer.
 
-    rsync -ah --progress --bwlimit=5000K /home/foxcodenine/Lubuntu-VB/11.mp4 /media/foxcodenine/corsair/
+    rsync -ah --progress  --bwlimit=5000K /home/foxcodenine/Lubuntu-VB/11.mp4 /media/foxcodenine/corsair/
 
+    $ sudo rsync -art --progress --exclude='/var/lib/flatpak/repo/objects' --exclude='/var/lib/docker/overlay2' --exclude='node_modules' --exclude='/var/lib/flatpak/runtime' --exclude='/var/lib/snapd/assertions' --exclude='/var/lib/swcatalog/icons' --bwlimit=50000K /var --ignore-existing /media/foxcodenine/ubuntu_root/main
 
+    $ sudo rsync -art --progress  --bwlimit=50000K /etc --ignore-existing /media/foxcodenine/ubuntu_root/main
+
+    $ rsync -art --progress  --bwlimit=50000K --exclude='VirtualBox VMs' --exclude='Lubuntu-VB' --exclude='*Cache*' --exclude='*cache*' --exclude='Docker.raw' --exclude='.android' --exclude='BraveSoftware' --exclude='.cache' --exclude='android-33' --exclude='EVO790plus' --exclude='node_modules' --exclude='pCloudDrive' --exclude='foxfiles' /home/foxcodenine  --ignore-existing /media/foxcodenine/ubuntu_root/main/home
 
 ### gpg
 
