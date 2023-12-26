@@ -1,0 +1,17 @@
+# /etc/fstab: static file system information.
+#
+# Use 'blkid' to print the universally unique identifier for a
+# device; this may be used with UUID= as a more robust way to name devices
+# that works even if disks are added and removed. See fstab(5).
+#
+# <file system> <mount point>   <type>  <options>       <dump>  <pass>
+# / was on /dev/nvme0n1p5 during installation
+UUID=5eb8661d-b077-4b97-870e-ebe50a946cba /               ext4    errors=remount-ro 0       1
+# /boot/efi was on /dev/nvme1n1p1 during installation
+UUID=2499-E410  /boot/efi       vfat    umask=0077      0       1
+# swap was on /dev/nvme0n1p2 during installation
+UUID=acbbbc81-319d-4c3e-88ed-4e814553c322 none            swap    sw              0       0
+# foxfiles was on /dev/nvme0n1p2 during installation
+UUID=d54214d8-281f-4aaa-bcbf-3acc3a0fdfc3  /home/foxcodenine/foxfiles       ext4    errors=remount-ro  0       2
+# EVO790plus on /dev/nvme0n1p6 
+UUID=0FD013A50FD013A5 /home/foxcodenine/EVO790plus       ntfs    errors=remount-ro  0       2
