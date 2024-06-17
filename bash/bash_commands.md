@@ -38,8 +38,41 @@
     $ sudo rsync -art --progress --exclude='/var/lib/flatpak/repo/objects' --exclude='/var/lib/docker/overlay2' --exclude='node_modules' --exclude='/var/lib/flatpak/runtime' --exclude='/var/lib/snapd/assertions' --exclude='/var/lib/swcatalog/icons' --bwlimit=50000K /var --ignore-existing /media/foxcodenine/ubuntu_root/main
 
     $ sudo rsync -art --progress  --bwlimit=50000K /etc --ignore-existing /media/foxcodenine/ubuntu_root/main
+    
 
     $ rsync -art --progress  --bwlimit=50000K --exclude='VirtualBox VMs' --exclude='Lubuntu-VB' --exclude='*Cache*' --exclude='*cache*' --exclude='Docker.raw' --exclude='.android' --exclude='BraveSoftware' --exclude='.cache' --exclude='android-33' --exclude='EVO790plus' --exclude='node_modules' --exclude='pCloudDrive' --exclude='foxfiles' /home/foxcodenine  --ignore-existing /media/foxcodenine/ubuntu_root/main/home
+
+    <!-- ------------------------------------------------------------------- -->
+    
+    <!-- as root -->
+
+    <!-- copy etc -->
+    rsync -artv --progress  --bwlimit=50000K /etc --ignore-existing '/media/foxcodenine/T7 Touch/backups/ubuntu_budgie_22.04'
+
+
+    <!-- copy var -->
+    rsync -artv --progress --exclude='/var/lib/flatpak/repo/objects' --exclude='/var/lib/docker/overlay2' --exclude='node_modules' --exclude='/var/lib/flatpak/runtime' --exclude='/var/lib/snapd/assertions' --exclude='/var/lib/swcatalog/icons' --bwlimit=50000K /var --ignore-existing '/media/foxcodenine/T7 Touch/backups/ubuntu_budgie_22.04';
+
+    <!-- copy home -->
+    rsync -artv --delete --progress  --bwlimit=50000K --exclude='VirtualBox VMs' --exclude='*Cache*' --exclude='*cache*' --exclude='Docker.raw' --exclude='.android' --exclude='BraveSoftware'  --exclude='.cache' --exclude='android-33' --exclude='EVO790plus' --exclude='node_modules' --exclude='pCloudDrive' --exclude='foxfiles' /home/foxcodenine  --ignore-existing '/media/foxcodenine/T7 Touch/backups/ubuntu_budgie_22.04/home';
+
+    <!-- copy foxfiles -->
+    rsync -artv --delete --progress  --bwlimit=50000K --exclude='befor-format' --exclude='foxfiles/git' --exclude='.Trash-1000' --exclude='vendor' --exclude='node_modules' /home/foxcodenine/foxfiles --ignore-existing '/media/foxcodenine/T7 Touch/backups';
+
+    <!-- copy pCloudDrive -->
+    rsync -artv --delete --progress  --bwlimit=50000K /home/foxcodenine/pCloudDrive --ignore-existing '/media/foxcodenine/T7 Touch/backups/'
+
+    <!-- installations -->
+    snap list  > snap_list.txt;
+    flatpak list  > flatpak_list.txt;
+    code --list-extensions > vscode_extention_list.txt;
+
+    <!-- tar and copy git -->
+    tar -czvf /media/foxcodenine/T7\ Touch/backups/git_backup.tar.gz /home/foxcodenine/foxfiles/git;
+
+
+
+
 
 ### gpg
 
