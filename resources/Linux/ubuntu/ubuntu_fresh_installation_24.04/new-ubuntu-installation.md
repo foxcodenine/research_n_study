@@ -364,4 +364,20 @@ Open your web browser and navigate to:
 
         $ docker-compose --version
   
- 
+
+
+#### Install Portainer CE with Docker on Linux
+
+First, create the volume that Portainer Server will use to store its database:
+
+
+    $ docker volume create portainer_data
+
+Then, download and install the Portainer Server container:
+
+
+    $ docker run -d  -p 9443:9443 --name portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce:latest
+
+Logging In:
+
+    $ https://localhost:9443
