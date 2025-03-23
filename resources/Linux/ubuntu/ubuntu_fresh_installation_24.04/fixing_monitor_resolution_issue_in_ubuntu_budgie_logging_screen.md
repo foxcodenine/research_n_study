@@ -1,4 +1,6 @@
 # Fixing Monitor Resolution Issue in Ubuntu Budgie (Logging Screen)
+## Superseded 
+##### Use fixing_monitor_resolution_dynamic_setup.md
 
 This guide explains the steps taken to resolve a monitor resolution issue with a portable monitor (`HDMI-2`) in Ubuntu Budgie 24.04.
 
