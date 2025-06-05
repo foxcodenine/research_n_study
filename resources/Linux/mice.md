@@ -3,6 +3,7 @@ sudo apt install piper
 
 sudo apt install solaar
 
+
 https://www.youtube.com/watch?v=M5yKovz8HCA
 https://github.com/libratbag/libratbag/tree/master/data/devices
 
